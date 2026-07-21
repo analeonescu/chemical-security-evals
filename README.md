@@ -5,8 +5,7 @@ Inspect AI, using only free-tier model providers (Gemini, Groq). Adds a
 dual-judge safety scorer to audit single-judge bias, which the original
 paper's GPT-4o-only judge setup doesn't test for.
 
-Source: ChemSafetyBench paper: https://github.com/HaochenZhao/SafeAgent4Chem
-(arXiv:2411.16736)
+Source: ChemSafetyBench paper (arXiv:2411.16736)
 
 ## Why dual-judge
 
