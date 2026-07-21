@@ -1,4 +1,4 @@
-# ChemSafetyBench Eval — Free-Tier Inspect AI Harness
+# Chemical Security Evals - Free-Tier Inspect AI Harness
 
 A reproduction + extension of ChemSafetyBench's "Synthesis" task, built on
 Inspect AI, using only free-tier model providers (Gemini, Groq). Adds a
