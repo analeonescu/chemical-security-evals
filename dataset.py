@@ -19,7 +19,7 @@ import json
 from pathlib import Path
 from inspect_ai.dataset import Sample, MemoryDataset
 
-DATA_PATH = Path("data/raw/synthesis_dataset.json")  # confirm actual filename
+DATA_PATH = Path(r"C:\Users\aleon\OneDrive\Desktop\chemical-security-evals\data\chemsafety_reconstructed.json")  # confirm actual filename
 
 
 def _record_to_sample(record: dict, idx: int) -> Sample:

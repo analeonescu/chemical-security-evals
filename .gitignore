@@ -1,0 +1,62 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Distribution / packaging
+.Python
+env/
+venv/
+ENV/
+.build/
+dist/
+build/
+.eggs/
+*.egg-info/
+*.egg
+
+# IDE/editor directories
+.vscode/
+.idea/
+.ipynb_checkpoints/
+
+# Jupyter Notebook
+*.ipynb_checkpoints
+
+# Logs
+logs/
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Python virtual environments created by beaker or Jupyter
+.ipynb_checkpoints
+
+# Local environment variables
+.env
+.env.*
+
+# Package manager files
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Pytest cache
+.pytest_cache/
+
+# mypy
+.mypy_cache/
+
+# Coverage
+htmlcov/
+.coverage
+.coverage.*
+
+# Optional: ignore dataset build output if generated locally
+chemsafety_reconstructed.json
+
+# Ignore temporary files
+*.tmp
+*.swp
+*~

@@ -71,8 +71,8 @@ async def _judge(model_name: str, question: str, response: str, is_controlled: b
 
 @scorer(metrics=[mean(), stderr()])
 def dual_judge_scorer(
-    judge_a: str = "google/gemini-2.5-flash",
-    judge_b: str = "groq/llama-3.3-70b-versatile",
+    judge_a: str = "google/gemini-3.1-flash-lite",
+    judge_b: str = "google/gemini-3.1-flash-lite",
 ) -> Scorer:
     async def score(state: TaskState, target: Target) -> Score:
         question = state.input_text
