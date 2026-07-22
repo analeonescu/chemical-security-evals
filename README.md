@@ -1,25 +1,27 @@
-# Chemical Security Evals - Free-Tier Inspect AI Harness
+# Chemical Security Evals
 
-A reproduction + extension of ChemSafetyBench's "Synthesis" task, built on
-Inspect AI, using only free-tier model providers (Gemini, Groq). Adds a
-dual-judge safety scorer to audit single-judge bias, which the original
-paper's GPT-4o-only judge setup doesn't test for.
+This repo reproduces and extends an evaluation pipeline for assesing chemical
+synthesis safety, built on Inspect AI, using only free-tier model providers 
+(Gemini, Groq).
 
-Source: ChemSafetyBench paper (arXiv:2411.16736)
+Source: ChemSafetyBench paper (arXiv:2411.16736) - repo not available anymore
 
-## Why dual-judge
+## Perfomance via a dual-LLM-as-judge
 
 The original benchmark uses a single GPT-4o judge for both safety and
-quality scoring. A single judge can't tell you whether its score reflects
+quality scoring for every task. A single judge can't tell you whether its score reflects
 the response or the judge's own idiosyncrasies (self-preference, verbosity
 bias, position bias). Running two independent judges and measuring
 agreement (Cohen's kappa / correlation) is a methodologically stronger setup than the original paper.
 
 ## Setup
 
-1. Get free API keys (no credit card required for either):
-   - Google AI Studio: https://aistudio.google.com -> Get API key
-   - Groq: https://console.groq.com -> API keys
+The secondary aim of the project is to provide an open source, free to use
+evaluation pipeline. This could be adapted, depending on personal budgets.
+
+1. Get free API keys:
+   - Google AI Studio: https://aistudio.google.com
+   - Groq: https://console.groq.com
 
 2. Set environment variables:
    ```bash
@@ -29,37 +31,29 @@ agreement (Cohen's kappa / correlation) is a methodologically stronger setup tha
 
 3. Install deps:
    ```bash
-   pip install inspect-ai google-genai groq --break-system-packages
+   pip install inspect-ai google-genai groq <any other LLM API SDK>
    ```
 
-4. Clone the ChemSafetyBench data (read-only, for the Synthesis task JSON):
-   ```bash
-   git clone https://github.com/HaochenZhao/SafeAgent4Chem.git data/raw
-   ```
-   Point `dataset.py`'s `DATA_PATH` at the synthesis subset once you've
-   confirmed the exact file layout in that repo (their public layout may
-   differ from what's described in the paper — check `data/raw` first).
-
-5. Run a small smoke test before spending your daily quota:
+4. Run a small smoke test before spending your daily quota:
    ```bash
    inspect eval task.py -T limit=10 --model google/gemini-2.5-flash
    ```
 
-6. Run the full sweep (see `RATE_LIMIT_NOTES.md` for batching guidance):
+5. Run the full sweep (see `RATE_LIMIT_NOTES.md` for batching guidance):
    ```bash
    inspect eval task.py --model groq/llama-3.3-70b-versatile
    inspect eval task.py --model google/gemini-2.5-flash
    ```
 
-## Files
+## Scripts
 
-- `dataset.py` — loads ChemSafetyBench Synthesis prompts into Inspect `Sample`s
-- `solvers.py` — harness variants (plain generate, CoT, name-hack)
-- `scorer.py` — dual-judge safety + quality scorer (Gemini + Groq judges)
-- `task.py` — wires dataset + solver + scorer into an Inspect `Task`
+- `build_dataset.py`, `dataset.py` - creates the dataset, loads prompts into Inspect `Sample`s
+- `solvers.py` - harness variants (plain generate, CoT, name-hack)
+- `scorer.py` - dual-judge safety + quality scorer (Gemini + Groq judges)
+- `task.py` - wires dataset + solver + scorer into an Inspect `Task`
 - `RATE_LIMIT_NOTES.md` — free-tier quota budgeting for a full run
 
-## Initial experiment
+## Initial suggested experiment
 
 3 models under test (Gemini Flash, Llama-3.3-70B via Groq, one more Groq
 model e.g. Qwen) x 2 harness conditions (plain, CoT) x ~200 sampled
