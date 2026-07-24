@@ -60,3 +60,8 @@ chemsafety_reconstructed.json
 *.tmp
 *.swp
 *~
+
+__pychache__/
+
+.vscode/
+

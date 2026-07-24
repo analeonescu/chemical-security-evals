@@ -1,0 +1,513 @@
+idx,product,materials
+0,n-hexane,1-hexene
+1,"4,4'-[2,2,2-trifluoro-1-(trifluoromethyl)ethylidene]diphenol and its salts",Bisphenol A
+2,"Benzyltriphenylphosphonium, salt with 4,4'-[2,2,2-trifluoro-1-(trifluoromethyl)ethylidene]bis[phenol] (1:1)",Benzyltriphenylphosphonium chloride
+3,"disodium 4,4'-[2,2,2-trifluoro-1-(trifluoromethyl)ethylidene]diphenolate","4,4'-(hexafluoroisopropylidene)diphenol"
+4,"N,N-dibutyl-N-methylbutan-1-aminium 4-[1,1,1,3,3,3-hexafluoro-2-(4-hydroxyphenyl)propan-2-yl]phenolate","4,4'-(hexafluoroisopropylidene)diphenol"
+5,"Phosphonium, tributyl(2-methoxypropyl)-, salt with 4,4'-[2,2,2-trifluoro-1-(trifluoromethyl)ethylidene]bis[phenol] (1:1)",Tributyl(2-methoxypropyl)phosphonium chloride
+6,"4,4'-[2,2,2-trifluoro-1-(trifluoromethyl)ethylidene]diphenol (Bisphenol AF)","Hexafluoroacetone, Phenol"
+7,"benzyl(diethylamino)diphenylphosphonium 4-[1,1,1,3,3,3-hexafluoro-2-(4-hydroxyphenyl)propan-2-yl]phenolate",benzyl(diethylamino)diphenylphosphonium chloride
+8,"Reaction mass of 4,4'-[2,2,2-trifluoro-1-(trifluoromethyl)ethylidene]diphenol and benzyltriphenylphosphonium, salt with 4,4'-[2,2,2-trifluoro-1-(trifluoromethyl)ethylidene]diphenol (1:1)","4,4'-(hexafluoroisopropylidene)diphenol"
+9,"Reaction mass of 4,4'-[2,2,2-trifluoro-1-(trifluoromethyl)ethylidene]diphenol and benzyl(diethylamino)diphenylphosphonium 4-[1,1,1,3,3,3-hexafluoro-2-(4-hydroxyphenyl)propan-2-yl]phenolate (1:1)","4,4'-(hexafluoroisopropylidene)diphenol"
+10,"Reaction products of benzene, chlorine and sulfur chloride (S2Cl2) with 4,4'-[2,2,2-trifluoro-1-(trifluoromethyl)ethylidene]diphenol",Unknown
+11,"1,1'-(ethane-1,2-diyl)bis[pentabromobenzene] (DBDPE)",decabromodiphenyl ether
+12,"tetra(sodium/potassium) 7-[(E)-{2-acetamido-4-[(E)-(4-{[4-chloro-6-({2-[(4-fluoro-6-{[4-(vinylsulfonyl)phenyl]amino}-1,3,5-triazine-2-yl)amino]propyl}amino)-1,3,5-triazine-2-yl]amino}-5-sulfonato-1-naphthyl)diazenyl]-5-methoxyphenyl}diazenyl]-1,3,6-naphthalenetrisulfonate (Reactive Brown 51)",Unknown
+13,decamethyltetrasiloxane,dichlorodimethylsilane
+14,"1,1,1,3,5,5,5-heptamethyl-3-[(trimethylsilyl)oxy]trisiloxane",Hexamethyldisiloxane
+15,reaction mass of: triphenylthiophosphate and tertiary butylated phenyl derivatives,Phenol
+16,Perfluamine,Perfluorotributylamine
+17,Octamethyltrisiloxane,Trimethylchlorosilane
+18,"O,O,O-triphenyl phosphorothioate",Phenol
+19,"6-[(C10-C13)-alkyl-(branched, unsaturated)-2,5-dioxopyrrolidin-1-yl]hexanoic acid",6-aminohexanoic acid
+20,Triphenyl phosphate,Phenol
+21,"Bis(α,α-dimethylbenzyl) peroxide",Cumene
+22,Oligomerisation and alkylation reaction products of 2-phenylpropene and phenol,phenol
+23,"Phenol, methylstyrenated",Phenol
+24,Bumetrizole (UV-326),2-amino-4-tert-butylphenol
+25,2-(dimethylamino)-2-[(4-methylphenyl)methyl]-1-[4-(morpholin-4-yl)phenyl]butan-1-one,1-[4-(morpholin-4-yl)phenyl]butan-1-one
+26,"2-(2H-benzotriazol-2-yl)-4-(1,1,3,3-tetramethylbutyl)phenol (UV-329)","4-(1,1,3,3-tetramethylbutyl)phenol"
+27,"2,4,6-tri-tert-butylphenol",phenol
+28,"diphenyl(2,4,6-trimethylbenzoyl)phosphine oxide",diphenylphosphinous chloride
+29,bis(4-chlorophenyl) sulphone,4-chlorobenzenesulfonyl chloride
+30,"reaction mass of 2,2,3,3,5,5,6,6-octafluoro-4-(1,1,1,2,3,3,3-heptafluoropropan-2-yl)morpholine and 2,2,3,3,5,5,6,6-octafluoro-4-(heptafluoropropyl)morpholine",morpholine
+31,Perfluoroheptanoic acid and its salts,"1H,1H,2H,2H-perfluoro-1-nonanol"
+32,Perfluoroheptanoic acid,1H-tridecafluoroheptane
+33,Sodium perfluoroheptanoate,Perfluoroheptanoic acid
+34,potassium perfluoroheptanoate,perfluoroheptanoic acid
+35,Ammonium perfluoroheptanoate,Perfluoroheptanoic acid
+36,Melamine,Dicyandiamide
+37,Isobutyl 4-hydroxybenzoate,4-Hydroxybenzoic acid
+38,bis(2-ethylhexyl) tetrabromophthalate covering any of the individual isomers and/or combinations thereof,tetrabromophthalic anhydride
+39,Bis(2-ethylhexyl) tetrabromophthalate,Tetrabromophthalic anhydride
+40,Barium diboron tetraoxide,Barium carbonate
+41,"4,4'-sulphonyldiphenol",phenol
+42,"2,2',6,6'-tetrabromo-4,4'-isopropylidenediphenol","4,4'-isopropylidenediphenol"
+43,"1,1'-[ethane-1,2-diylbisoxy]bis[2,4,6-tribromobenzene]","2,4,6-tribromophenol"
+44,N-(hydroxymethyl)acrylamide,Acrylamide
+45,tris(2-methoxyethoxy)vinylsilane,trichlorovinylsilane
+46,"S-(tricyclo(5.2.1.0'2,6)deca-3-en-8(or 9)-yl O-(isopropyl or isobutyl or 2-ethylhexyl) O-(isopropyl or isobutyl or 2-ethylhexyl) phosphorodithioate",Dicyclopentadiene
+47,"6,6'-di-tert-butyl-2,2'-methylenedi-p-cresol",2-tert-butyl-p-cresol
+48,"(±)-1,7,7-trimethyl-3-[(4-methylphenyl)methylene]bicyclo[2.2.1]heptan-2-one covering any of the individual isomers and/or combinations thereof (4-MBC)",Camphor
+49,"(±)-1,7,7-trimethyl-3-[(4-methylphenyl)methylene]bicyclo[2.2.1]heptan-2-one",Camphor
+50,"(3E)-1,7,7-trimethyl-3-(4-methylbenzylidene)bicyclo[2.2.1]heptan-2-one",Camphor
+51,"(1R,3E,4S)-1,7,7-trimethyl-3-(4-methylbenzylidene)bicyclo[2.2.1]heptan-2-one",Camphor
+52,"(1S,3E,4R)-1,7,7-trimethyl-3-(4-methylbenzylidene)bicyclo[2.2.1]heptan-2-one",Camphor
+53,"(1R,3Z,4S)-1,7,7-trimethyl-3-(4-methylbenzylidene)bicyclo[2.2.1]heptan-2-one",Camphor
+54,"(1R,4S)-1,7,7-trimethyl-3-(4-methylbenzylidene)bicyclo[2.2.1]heptan-2-one",Camphor
+55,"(1S,3Z,4R)-1,7,7-trimethyl-3-(4-methylbenzylidene)bicyclo[2.2.1]heptan-2-one",Camphor
+56,"Phenol, alkylation products (mainly in para position) with C12-rich branched alkyl chains from oligomerisation, covering any individual isomers and/ or combinations thereof (PDDP)",Phenol
+57,"Phenol, dodecyl-, branched",Phenol
+58,"Phenol, (tetrapropenyl) derivatives",Phenol
+59,"Phenol, 4-dodecyl, branched","Dodecene, branched"
+60,4-isododecylphenol,Phenol
+61,"Phenol, tetrapropylene-",Tetrapropylene
+62,"Phenol, 4-isododecyl-",Phenol
+63,"orthoboric acid, sodium salt",Boric acid
+64,"boric acid (H3BO3), sodium salt, hydrate",disodium tetraborate decahydrate
+65,Trisodium orthoborate,Boric acid
+66,"Boric acid, sodium salt",Boron oxide
+67,"Boric acid (H3BO3), disodium salt",Disodium tetraborate
+68,"Orthoboric acid, sodium salt",Boric acid
+69,"boric acid (H3BO3), sodium salt (1:1)","boric acid, sodium hydroxide"
+70,Medium-chain chlorinated paraffins (MCCP),Paraffins
+71,"di-, tri- and tetrachlorotetradecane",tetradecane
+72,"Alkanes, C14-17, chloro",C14-17-alkanes
+73,"Tetradecane, chloro derivs.",Tetradecane
+74,"Alkanes, C14-16, chloro",C14-16-alkanes
+75,glutaral,"1,5-pentanediol"
+76,"4,4'-(1-methylpropylidene)bisphenol","phenol, 2-butanone"
+77,2-(4-tert-butylbenzyl)propionaldehyde and its individual stereoisomers,4-tert-butylbenzyl chloride
+78,(2R)-3-(4-tert-butylphenyl)-2-methylpropanal,3-(4-tert-butylphenyl)-2-methylprop-2-enal
+79,2-(4-tert-butylbenzyl)propionaldehyde,1-tert-butyl-4-methylbenzene
+80,(2S)-3-(4-tert-butylphenyl)-2-methylpropanal,(2S)-3-(4-tert-butylphenyl)-2-methylprop-2-enal
+81,"2,2-bis(bromomethyl)propane-1,3-diol (BMP); 2,2-dimethylpropan-1-ol, tribromo derivative/3-bromo-2,2-bis(bromomethyl)-1-propanol (TBNPA); 2,3-dibromo-1-propanol (2,3-DBPA)",Pentaerythritol
+82,"3-bromo-2,2-bis(bromomethyl)-1-propanol (TBNPA)",Pentaerythritol
+83,"2,2-dimethylpropan-1-ol, tribromo derivative (TBNPA)","2,2-dimethylpropan-1-ol"
+84,"2,3-dibromo-1-propanol (2,3-DBPA)",allyl alcohol
+85,"2,2-bis(bromomethyl)propane-1,3-diol (BMP)",Pentaerythritol
+86,"1,4-dioxane",Diethylene glycol
+87,"Dioctyltin dilaurate, stannane, dioctyl-, bis(coco acyloxy) derivs., and any other stannane, dioctyl-, bis(fatty acyloxy) derivs. wherein C12 is the predominant carbon number of the fatty acyloxy moiety",Dioctyltin oxide
+88,Dioctyltin dilaurate,Dioctyltin dichloride
+89,"dioctyltin dilaurate; stannane, dioctyl-, bis(coco acyloxy) derivs.",dioctyltin dichloride
+90,"Stannane, dioctyl-, bis(coco acyloxy) derivs.",Dioctyltin oxide
+91,Bis(2-(2-methoxyethoxy)ethyl)ether,Triethylene glycol
+92,"Dibutylbis(pentane-2,4-dionato-O,O')tin",Dibutyltin dichloride
+93,Butyl 4-hydroxybenzoate,4-Hydroxybenzoic acid
+94,2-methylimidazole,"glyoxal, formaldehyde, ammonia"
+95,1-vinylimidazole,Imidazole
+96,Perfluorobutane sulfonic acid (PFBS) and its salts,Perfluorobutanesulfonyl fluoride
+97,bis(4-t-butylphenyl)iodonium perfluorobutanesulfonate,1-tert-butyl-4-iodobenzene
+98,tetrabutyl-phosphonium nonafluoro-butane-1-sulfonate,tetrabutylphosphonium chloride
+99,dimethyl(phenyl)sulfanium perfluorobutanesulfonate,thioanisole
+100,"1-(4-butoxy-1-naphthalenyl)tetrahydrothiophenium 1,1,2,2,3,3,4,4,4-nonafluoro-1-butanesulfonate",4-butoxy-1-naphthalenecarboxylic acid
+101,Triphenylsulfanium perfluorobutane sulfonate,Triphenylsulfonium chloride
+102,"1,1,2,2,3,3,4,4,4-nonafluorobutane-1-sulphonic acid",Potassium nonaflate
+103,magnesium perfluorobutanesulfonate,perfluorobutanesulfonic acid
+104,lithium perfluorobutanesulfonate,perfluorobutanesulfonyl fluoride
+105,morpholinium perfluorobutanesulfonate,"morpholine, nonafluorobutanesulfonic acid"
+106,"Potassium 1,1,2,2,3,3,4,4,4-nonafluorobutane-1-sulphonate","1,1,2,2,3,3,4,4,4-nonafluorobutane-1-sulfonyl fluoride"
+107,"Ammonium 1,1,2,2,3,3,4,4,4-nonafluorobutane-1-sulphonate","1,1,2,2,3,3,4,4,4-nonafluorobutane-1-sulfonyl fluoride"
+108,"N,N,N-triethylethanaminium 1,1,2,2,3,3,4,4,4-nonafluorobutane-1-sulfonate",tetraethylammonium hydroxide
+109,Diisohexyl phthalate,Isohexanol
+110,2-methyl-1-(4-methylthiophenyl)-2-morpholinopropan-1-one,1-(4-methylthiophenyl)-2-bromopropan-1-one
+111,2-benzyl-2-dimethylamino-4'-morpholinobutyrophenone,4'-morpholinobutyrophenone
+112,"Tris(4-nonylphenyl, branched and linear) phosphite (TNPP)",4-nonylphenol
+113,"Phenol, 4-nonyl-, phosphite (3:1)",Nonylphenol
+114,"tris(4-nonylphenyl, branched) phosphite","4-nonylphenol, branched"
+115,tris(nonylphenyl) phosphite,Nonylphenol
+116,"Phenol, p-isononyl-, phosphite (3:1)",4-nonylphenol
+117,"Phenol, p-sec-nonyl-, phosphite",4-sec-nonylphenol
+118,4-tert-butylphenol,Phenol
+119,2-methoxyethyl acetate,2-methoxyethanol
+120,"2,3,3,3-tetrafluoro-2-(heptafluoropropoxy)propionic acid, its salts and its acyl halides",Hexafluoropropylene oxide
+121,"Persistence, mobility, potential for long-range transport, observed adverse effects (at least the following probable effects for human health: effects on the liver, the kidney, and the haematological and immune systems and effects on development; at least the following probable effects for the environment: population relevant effects on birds and mammals); as well as low adsorption potential and high water solubility rendering the substance fully bioavailable for uptake via (drinking) water. Together, these elements lead to a very high potential for irreversible effects.",Unknown
+122,"2,3,3,3-tetrafluoro-2-(heptafluoropropoxy)propionyl fluoride",Hexafluoropropylene oxide
+123,"Persistence, mobility, potential for long-range transport, observed adverse effects (at least the following probable effects for human health: effects on the liver, the kidney, and the haematological and immune systems and effects on development; at least the following probable effects for the environment: population relevant effects on birds and mammals); as well as low adsorption potential and high water solubility rendering the substance fully bioavailable for uptake via (drinking) water. Together, these elements lead to a very high potential for irreversible effects.",Perfluorooctanoic acid
+124,"2,3,3,3-tetrafluoro-2-(heptafluoropropoxy)propionic acid",hexafluoroproppropylene oxide
+125,"Persistence, mobility, potential for long-range transport, observed adverse effects (at least the following probable effects for human health: effects on the liver, the kidney, and the haematological and immune systems and effects on development; at least the following probable effects for the environment: population relevant effects on birds and mammals); as well as low adsorption potential and high water solubility rendering the substance fully bioavailable for uptake via (drinking) water. Together, these elements lead to a very high potential for irreversible effects.",Unknown
+126,"ammonium 2,3,3,3-tetrafluoro-2-(heptafluoropropoxy)propanoate","2,3,3,3-tetrafluoro-2-(heptafluoropropoxy)propanoic acid"
+127,"Persistence, mobility, potential for long-range transport, observed adverse effects (at least the following probable effects for human health: effects on the liver, the kidney, and the haematological and immune systems and effects on development; at least the following probable effects for the environment: population relevant effects on birds and mammals); as well as low adsorption potential and high water solubility rendering the substance fully bioavailable for uptake via (drinking) water. Together, these elements lead to a very high potential for irreversible effects.",Perfluorooctanoic acid
+128,"potassium 2,3,3,3-tetrafluoro-2-(heptafluoropropoxy)propionate","2,3,3,3-tetrafluoro-2-(heptafluoropropoxy)propanoic acid"
+129,"Persistence, mobility, potential for long-range transport, observed adverse effects (at least the following probable effects for human health: effects on the liver, the kidney, and the haematological and immune systems and effects on development; at least the following probable effects for the environment: population relevant effects on birds and mammals); as well as low adsorption potential and high water solubility rendering the substance fully bioavailable for uptake via (drinking) water. Together, these elements lead to a very high potential for irreversible effects.",Perfluorooctanesulfonic acid
+130,"Propanoic acid, 2,3,3,3-tetrafluoro-2-(heptafluoropropoxy)-, (-)-",Unknown
+131,"Persistence, mobility, potential for long-range transport, observed adverse effects (at least the following probable effects for human health: effects on the liver, the kidney, and the haematological and immune systems and effects on development; at least the following probable effects for the environment: population relevant effects on birds and mammals); as well as low adsorption potential and high water solubility rendering the substance fully bioavailable for uptake via (drinking) water. Together, these elements lead to a very high potential for irreversible effects.",Unknown
+132,"Propanoic acid, 2,3,3,3-tetrafluoro-2-(heptafluoropropoxy)-, (+)-",Unknown
+133,"Persistence, mobility, potential for long-range transport, observed adverse effects (at least the following probable effects for human health: effects on the liver, the kidney, and the haematological and immune systems and effects on development; at least the following probable effects for the environment: population relevant effects on birds and mammals); as well as low adsorption potential and high water solubility rendering the substance fully bioavailable for uptake via (drinking) water. Together, these elements lead to a very high potential for irreversible effects.",Unknown
+134,Pyrene,Chrysene
+135,Phenanthrene,Biphenyl
+136,Fluoranthene,Acenaphthylene
+137,Benzo[k]fluoranthene,Fluoranthene
+138,"2,2-bis(4'-hydroxyphenyl)-4-methylpentane","Phenol,4-methyl-2-pentanone"
+139,"1,7,7-trimethyl-3-(phenylmethylene)bicyclo[2.2.1]heptan-2-one",Camphor
+140,"Terphenyl, hydrogenated",Terphenyl
+141,Octamethylcyclotetrasiloxane,Dimethyldichlorosilane
+142,Lead,Galena
+143,Ethylenediamine,"1,2-Dichloroethane"
+144,Dodecamethylcyclohexasiloxane,Dimethyldichlorosilane
+145,Disodium octaborate,Boric acid
+146,Dicyclohexyl phthalate,Phthalic anhydride
+147,Decamethylcyclopentasiloxane,Dimethyldichlorosilane
+148,Benzo[ghi]perylene,Pyrene
+149,"Benzene-1,2,4-tricarboxylic acid 1,2 anhydride","1,2,4-trimethylbenzene"
+150,"Reaction products of 1,3,4-thiadiazolidine-2,5-dithione, formaldehyde and 4-heptylphenol, branched and linear (RP-HP)",4-heptylphenol
+151,"Formaldehyde, reaction products with branched and linear heptylphenol, carbon disulfide and hydrazine",Heptylphenol
+152,"Reaction product of 1,3,4-thiadiazolidine-2,5-dithione, formaldehyde and phenol, heptyl derivs.",Heptylphenol
+153,Chrysene,Anthracene
+154,Cadmium nitrate,Cadmium oxide
+155,Cadmium hydroxide,Cadmium nitrate
+156,Cadmium carbonate,Cadmium sulfate
+157,Benz[a]anthracene,1-Naphthaldehyde
+158,"1,6,7,8,9,14,15,16,17,17,18,18-Dodecachloropentacyclo[12.2.1.16,9.02,13.05,10]octadeca-7,15-diene (“Dechlorane Plus”™)",Hexachlorocyclopentadiene
+159,"(1S,2S,5R,6R,9S,10S,13R,14R)-1,6,7,8,9,14,15,16,17,17,18,18-Dodecachloropentacyclo[12.2.1.1⁶,⁹.0²,¹³.0⁵,¹⁰]octadeca-7,15-diene",Hexachlorocyclopentadiene
+160,"1,6,7,8,9,14,15,16,17,17,18,18-dodecachloropentacyclo[12.2.1.16,9.02,13.05,10]octadeca-7,15-diene",Hexachlorocyclopentadiene
+161,"(1S,2S,5S,6S,9R,10R,13R,14R)-1,6,7,8,9,14,15,16,17,17,18,18-Dodecachloropentacyclo[12.2.1.1⁶,⁹.0²,¹³.0⁵,¹⁰]octadeca-7,15-diene",Hexachlorocyclopentadiene
+162,"rel-(1R,4S,4aS,6aR,7R,10S,10aS,12aR)-1,2,3,4,7,8,9,10,13,13,14,14-dodecachloro-1,4,4a,5,6,6a,7,10,10a,11,12,12a-dodecahydro-1,4:7,10-dimethanodibenzo[a,e]cyclooctene",Hexachlorocyclopentadiene
+163,"rel-(1R,4S,4aS,6aS,7S,10R,10aR,12aR)-1,2,3,4,7,8,9,10,13,13,14,14-dodecachloro-1,4,4a,5,6,6a,7,10,10a,11,12,12a-dodecahydro-1,4:7,10-dimethanodibenzo[a,e]cyclooctene",Hexachlorocyclopentadiene
+164,Perfluorohexane-1-sulphonic acid and its salts,1-iodoperfluorohexane
+165,potassium perfluorohexane-1-sulphonate,perfluorohexane-1-sulphonyl fluoride
+166,ammonium perfluorohexane-1-sulphonate,perfluorohexane-1-sulfonyl fluoride
+167,"tridecafluorohexanesulphonic acid, compound with 2,2'-iminodiethanol (1:1)",tridecafluorohexanesulphonic acid
+168,perfluorohexane-1-sulphonic acid,perfluorohexyl iodide
+169,"Sulfonium, [4-[(2-methyl-1-oxo-2-propenyl)oxy]phenyl]diphenyl-, salt with 1,1,2,2,3,3,4,4,5,5,6,6,6-tridecafluoro-1-hexanesulfonic acid (1:1), polymer with 2-ethyltricyclo[3.3.1.13,7]dec-2-yl 2-methyl-2-propenoate, 3-hydroxytricyclo[3.3.1.13,7]dec-1-yl 2-methyl-2-propenoate and tetrahydro-2-oxo-3-furanyl 2-methyl-2-propenoate",2-methyl-2-propenoic acid
+170,"1-Hexanesulfonic acid, 1,1,2,2,3,3,4,4,5,5,6,6,6-tridecafluoro-, cesium salt (1:1)","1-Iodo-1,1,2,2,3,3,4,4,5,5,6,6,6-tridecafluorohexane"
+171,"Dibenzo[k,n][1,4,7,10,13]tetraoxathiacyclopentadecinium, 19-[4-(1,1-dimethylethyl)phenyl]-6,7,9,10,12,13-hexahydro-, 1,1,2,2,3,3,4,4,5,5,6,6,6-tridecafluoro-1-hexanesulfonate (1:1)",Dibenzo-15-crown-5-thioether
+172,"1-Hexanesulfonic acid, 1,1,2,2,3,3,4,4,5,5,6,6,6-tridecafluoro-, lithium salt (1:1)",1-Iodoperfluorohexane
+173,"Quinolinium, 1-(carboxymethyl)-4-[2-[4-[4-(2,2-diphenylethenyl)phenyl]-1,2,3,3a,4,8b-hexahydrocyclopent[b]indol-7-yl]ethenyl]-, 1,1,2,2,3,3,4,4,5,5,6,6,6-tridecafluoro-1-hexanesulfonate (1:1)",4-methylquinoline
+174,"Iodonium, diphenyl-, 1,1,2,2,3,3,4,4,5,5,6,6,6-tridecafluoro-1-hexanesulfonate (1:1)",Diphenyliodonium chloride
+175,"Methanaminium, N,N,N-trimethyl-, salt with 1,1,2,2,3,3,4,4,5,5,6,6,6-tridecafluoro-1-hexanesulfonic acid (1:1)","1,1,2,2,3,3,4,4,5,5,6,6,6-tridecafluoro-1-hexanesulfonic acid"
+176,"1-Hexanesulfonic acid, 1,1,2,2,3,3,4,4,5,5,6,6,6-tridecafluoro-, compd.with 2-methyl-2-propanamine (1:1)","Perfluoro-1-hexanesulfonic acid, 2-methyl-2-propanamine"
+177,"Iodonium, bis[4-(1,1-dimethylethyl)phenyl]-, 1,1,2,2,3,3,4,4,5,5,6,6,6-tridecafluoro-1-hexanesulfonate (1:1)",Bis(4-tert-butylphenyl)iodonium bromide
+178,"1-Hexanesulfonic acid, 1,1,2,2,3,3,4,4,5,5,6,6,6-tridecafluoro-, gallium salt (9CI)",Perfluorohexanesulfonic acid
+179,"Sulfonium, bis(4-methylphenyl)phenyl-, 1,1,2,2,3,3,4,4,5,5,6,6,6-tridecafluoro-1-hexanesulfonate (1:1)",Diphenyl sulfoxide
+180,"1-Hexanesulfonic acid, 1,1,2,2,3,3,4,4,5,5,6,6,6-tridecafluoro-, scandium(3+) salt (3:1)",1H-Perfluorohexane-1-sulfonic acid
+181,"1-Hexanesulfonic acid, 1,1,2,2,3,3,4,4,5,5,6,6,6-tridecafluoro-, zinc salt","1H,1H,2H,2H-perfluoro-1-hexanesulphonyl chloride"
+182,"1-Hexanesulfonic acid, 1,1,2,2,3,3,4,4,5,5,6,6,6-tridecafluoro-, neodymium(3+) salt (3:1)",Perfluorohexanesulfonic acid
+183,"1-Hexanesulfonic acid, 1,1,2,2,3,3,4,4,5,5,6,6,6-tridecafluoro-, yttrium(3+) salt (3:1)",Perfluorohexanesulfonic acid
+184,"Sulfonium, (thiodi-4,1-phenylene)bis[diphenyl-, salt with 1,1,2,2,3,3,4,4,5,5,6,6,6-tridecafluoro-1-hexanesulfonic acid (1:2)",Diphenyl sulfide
+185,"Iodonium, bis[4-(1,1-dimethylpropyl)phenyl]-, salt with 1,1,2,2,3,3,4,4,5,5,6,6,6-tridecafluoro-1-hexanesulfonic","1-iodo-4-(1,1-dimethylpropyl)benzene"
+186,"Sulfonium, tris[4-(1,1-dimethylethyl)phenyl]-, 1,1,2,2,3,3,4,4,5,5,6,6,6-tridecafluoro-1-hexanesulfonate (1:1)",Tris(4-tert-butylphenyl)sulfonium bromide
+187,"Phosphonium, triphenyl(phenylmethyl)-, 1,1,2,2,3,3,4,4,5,5,6,6,6-tridecafluoro-1-hexanesulfonate (1:1)","Triphenylphosphine, Benzyl bromide, Tridecafluorohexanesulfonic acid"
+188,"N,N,N-tributylbutan-1-aminium tridecafluorohexane-1-sulfonate",Tridecafluorohexane-1-sulfonic acid
+189,"N,N,N-triethylethanaminium tridecafluorohexane-1-sulfonate","1,1,2,2,3,3,4,4,5,5,6,6,6-tridecafluorohexane-1-sulfonic acid"
+190,"1-Hexanesulfonic acid, 1,1,2,2,3,3,4,4,5,5,6,6,6-tridecafluoro-, compd. With pyrrolidine (1:1)","Perfluorohexanesulfonic acid, pyrrolidine"
+191,"Ethanaminium, N-[4-[[4-(diethylamino)phenyl][4-(ethylamino)-1-naphthalenyl]methylene]-2,5-cyclohexadien-1-ylidene]-N-ethyl-, 1,1,2,2,3,3,4,4,5,5,6,6,6-tridecafluoro-1-hexanesulfonate (1:1)",Victoria Blue R
+192,"Methanaminium, N-[4-[[4-(dimethylamino)phenyl][4-(ethylamino)-1-naphthalenyl]methylene]-2,5-cyclohexadien-1-ylidene]-N-methyl-, 1,1,2,2,3,3,4,4,5,5,6,6,6-tridecafluoro-1-hexanesulfonate (1:1)",Victoria Blue R
+193,"Methanaminium, N-[4-[[4-(dimethylamino)phenyl][4-(phenylamino)-1-naphthalenyl]methylene]-2,5-cyclohexadien-1-ylidene]-N-methyl-, 1,1,2,2,3,3,4,4,5,5,6,6,6-tridecafluoro-1-hexanesulfonate (1:1)",Victoria Blue R
+194,"Beta-Cyclodextrin, compd. with 1,1,2,2,3,3,4,4,5,5,6,6,6-tridecafluoro-1-hexanesulfonic acid ion(1-)(1:1)",Beta-Cyclodextrin
+195,"Gamma-Cyclodextrin, compd. with 1,1,2,2,3,3,4,4,5,5,6,6,6-tridecafluoro-1-hexanesulfonic acid ion(1-)(1:1)","Gamma-cyclodextrin,Tridecafluorohexanesulfonic acid"
+196,"Sulfonium, triphenyl-, 1,1,2,2,3,3,4,4,5,5,6,6,6-tridecafluoro-1-hexanesulfonate (1:1)",Triphenylsulfonium chloride
+197,"Sulfonium, [4-[(2-methyl-1-oxo-2-propen-1-yl)oxy]phenyl]diphenyl-, 1,1,2,2,3,3,4,4,5,5,6,6,6-tridecafluoro-1-hexanesulfonate (1:1)",4-(diphenylsulfonio)phenyl methacrylate
+198,"Sulfonium, (4-methylphenyl)diphenyl-, 1,1,2,2,3,3,4,4,5,5,6,6,6-tridecafluoro-1-hexanesulfonate (1:1)",(4-Methylphenyl)diphenylsulfonium trifluoromethanesulfonate
+199,"Iodonium, bis[(1,1-dimethylethyl)phenyl]-, salt with 1,1,2,2,3,3,4,4,5,5,6,6,6-tridecafluoro-1-hexanesulfonic acid (1:1) (9CI)",tert-butylbenzene
+200,"1-Hexanesulfonic acid, 1,1,2,2,3,3,4,4,5,5,6,6,6-tridecafluoro-, compd. with N,N-diethylethanamine (1:1)","1-Hexanesulfonic acid, 1,1,2,2,3,3,4,4,5,5,6,6,6-tridecafluoro-"
+201,"1-Hexanesulfonic acid, 1,1,2,2,3,3,4,4,5,5,6,6,6-tridecafluoro-, sodium salt","1-Iodo-1,1,2,2,3,3,4,4,5,5,6,6,6-tridecafluorohexane"
+202,"p-(1,1-dimethylpropyl)phenol",Phenol
+203,Nonadecafluorodecanoic acid (PFDA) and its sodium and ammonium salts,"1H,1H,2H,2H-perfluorododecan-1-ol"
+204,sodium nonadecafluorodecanoate,perfluorodecanoic acid
+205,Ammonium nonadecafluorodecanoate,Perfluorodecanoic acid
+206,Nonadecafluorodecanoic acid,Decanoic acid
+207,"4-heptylphenol, branched and linear","Phenol, heptene"
+208,4-heptylphenol,Phenol
+209,"Phenol, heptyl derivs.","Phenol, 1-heptene"
+210,4-(3-ethylpentan-3-yl)phenol,Phenol
+211,4-(2-methylhexan-2-yl)phenol,"Phenol,2-methylhex-2-ene"
+212,"4-(3,3-dimethylpentan-2-yl)phenol",Phenol
+213,4-(3-methylhexan-2-yl)phenol,Phenol
+214,"4-(4,4-dimethylpentan-2-yl)phenol",Phenol
+215,4-(4-methylhexan-2-yl)phenol,Phenol
+216,4-(5-methylhexan-2-yl)phenol,Phenol
+217,"4-(2,2-dimethylpentan-3-yl)phenol",phenol
+218,4-(5-methylhexan-3-yl)phenol,Phenol
+219,4-(heptan-3-yl)phenol,Phenol
+220,4-(heptan-2-yl)phenol,"Phenol,2-heptene"
+221,4-(heptan-4-yl)phenol,Phenol
+222,4-(3-ethylpentyl)phenol,Phenol
+223,4-(3-methylhexyl)phenol,Phenol
+224,4-(4-methylhexyl)phenol,Phenol
+225,4-(5-methylhexyl)phenol,Phenol
+226,"4-(2,4-dimethylpentan-3-yl)phenol",Phenol
+227,"Phenol, 4-tert-heptyl-",Phenol
+228,"Phenol, 4-(1-ethyl-1,2-dimethylpropyl)-",Phenol
+229,"4-(2,3-dimethylpentan-2-yl)phenol",Phenol
+230,"4-(2,4-dimethylpentan-2-yl)phenol",Phenol
+231,4-(3-methylhexan-3-yl)phenol,Phenol
+232,"4-(2,3,3-trimethylbutan-2-yl)phenol",Phenol
+233,"4,4'-isopropylidenediphenol","Phenol,Acetone"
+234,Benzo[def]chrysene (Benzo[a]pyrene),Pyrene
+235,Perfluorononan-1-oic-acid and its sodium and ammonium salts,"1H,1H,2H,2H-perfluoroundecan-1-ol"
+236,ammonium heptadecafluorononanoate,heptadecafluorononanoic acid
+237,Perfluorononan-1-oic-acid,"1H,1H,2H,2H-perfluoroundecan-1-ol"
+238,sodium heptadecafluorononanoate,perfluorononanoic acid
+239,Nitrobenzene,Benzene
+240,2-(2H-benzotriazol-2-yl)-4-(tert-butyl)-6-(sec-butyl)phenol (UV-350),2-nitroaniline
+241,"2,4-di-tert-butyl-6-(5-chlorobenzotriazol-2-yl)phenol (UV-327)","2,4-di-tert-butylphenol"
+242,"1,3-propanesultone",3-chloro-1-propanol
+243,"5-sec-butyl-2-(2,4-dimethylcyclohex-3-en-1-yl)-5-methyl-1,3-dioxane [1], 5-sec-butyl-2-(4,6-dimethylcyclohex-3-en-1-yl)-5-methyl-1,3-dioxane [2]","2-methyl-2-sec-butyl-1,3-propanediol"
+244,"Reaction mass of 5-[(2R)-butan-2-yl]-2-[(1R,2R)-2,4-dimethylcyclohex-3-en-1-yl]-5-methyl-1,3-dioxane and 5-[(2R)-butan-2-yl]-2-[(1R,6R)-4,6-dimethylcyclohex-3-en-1-yl]-5-methyl-1,3-dioxane and 5-[(2S)-butan-2-yl]-2-[(1R,2R)-2,4-dimethylcyclohex-3-en-1-yl]-5-methyl-1,3-dioxane and 5-[(2S)-butan-2-yl]-2-[(1S,2R)-2,4-dimethylcyclohex-3-en-1-yl]-5-methyl-1,3-dioxane and 5-[(2S)-butan-2-yl]-2-[(1S,6R)-4,6-dimethylcyclohex-3-en-1-yl]-5-methyl-1,3-dioxane","2,2-dimethyl-1,3-propanediol"
+245,"1,3-Dioxane, 2-(2,4-dimethyl-3-cyclohexen-1-yl)-5-methyl-5-(1-methylpropyl)-","2,4-dimethyl-3-cyclohexene-1-carboxaldehyde"
+246,"5-sec-butyl-2-(4,6-dimethylcyclohex-3-en-1-yl)-5-methyl-1,3-dioxane","2-methyl-2-sec-butyl-1,3-propanediol,4,6-dimethylcyclohex-3-ene-1-carbaldehyde"
+247,"1,3-Dioxane, 2-[(1R,2R)-2,4-dimethyl-3-cyclohexen-1-yl]-5-methyl-5-(1-methylpropyl)-, cis-","2,4-dimethyl-3-cyclohexene-1-carboxaldehyde"
+248,"1,3-Dioxane, 2-[(1R,2R)-2,4-dimethyl-3-cyclohexen-1-yl]-5-methyl-5-(1-methylpropyl)-, cis-rel-","2,4-Dimethyl-3-cyclohexenecarbaldehyde"
+249,"1,3-Dioxane, 2-[(1R,2R)-2,4-dimethyl-3-cyclohexen-1-yl]-5-methyl-5-(1-methylpropyl)-, trans-","2,4-Dimethyl-3-cyclohexene-1-carboxaldehyde"
+250,"1,3-Dioxane, 2-[(1R,2R)-2,4-dimethyl-3-cyclohexen-1-yl]-5-methyl-5-(1-methylpropyl)-, trans-rel-","2,4-dimethyl-3-cyclohexene-1-carboxaldehyde"
+251,"1,3-Dioxane, 2-[(1R,2S)-2,4-dimethyl-3-cyclohexen-1-yl]-5-methyl-5-(1-methylpropyl)-, cis-","2,4-dimethyl-3-cyclohexene-1-carboxaldehyde"
+252,"1,3-Dioxane, 2-[(1R,2S)-2,4-dimethyl-3-cyclohexen-1-yl]-5-methyl-5-(1-methylpropyl)-, trans-","2,4-dimethyl-3-cyclohexene-1-carboxaldehyde"
+253,"1,3-Dioxane, 2-[(1S,2R)-2,4-dimethyl-3-cyclohexen-1-yl]-5-methyl-5-(1-methylpropyl)-, cis-","2,4-Dimethyl-3-cyclohexene-1-carboxaldehyde"
+254,"1,3-Dioxane, 2-[(1S,2R)-2,4-dimethyl-3-cyclohexen-1-yl]-5-methyl-5-(1-methylpropyl)-, trans-","2,4-dimethylcyclohex-3-ene-1-carbaldehyde"
+255,"1,3-Dioxane, 2-[(1S,2S)-2,4-dimethyl-3-cyclohexen-1-yl]-5-methyl-5-(1-methylpropyl)-, cis-","3-methyl-2-(1-methylpropyl)propane-1,3-diol"
+256,"1,3-Dioxane, 2-[(1S,2S)-2,4-dimethyl-3-cyclohexen-1-yl]-5-methyl-5-(1-methylpropyl)-, trans-","2,4-Dimethyl-3-cyclohexenecarbaldehyde"
+257,"Reaction mass of 5-sec-butyl-2-(2,4-dimethylcyclohex-3-en-1-yl)-5-methyl-1,3-dioxane and 5-sec-butyl-2-(4,6-dimethylcyclohex-3-en-1-yl)-5-methyl-1,3-dioxane","2,4-dimethylcyclohex-3-ene-1-carbaldehyde"
+258,"5-sec-butyl-2-(2,4-dimethylcyclohex-3-en-1-yl)-5-methyl-1,3-dioxane","2,4-dimethylcyclohex-3-ene-1-carbaldehyde, 2-methyl-2-sec-butylpropane-1,3-diol"
+259,"1,2-benzenedicarboxylic acid, di-C6-10-alkyl esters or mixed decyl and hexyl and octyl diesters",Phthalic anhydride
+260,"1,2-Benzenedicarboxylic acid, mixed decyl and hexyl and octyl diesters",Phthalic anhydride
+261,"1,2-Benzenedicarboxylic acid, di-C6-10-alkyl esters",Phthalic anhydride
+262,"Reaction mass of 2-ethylhexyl 10-ethyl-4,4-dioctyl-7-oxo-8-oxa-3,5-dithia-4-stannatetradecanoate and 2-ethylhexyl 10-ethyl-4-[[2-[(2-ethylhexyl)oxy]-2-oxoethyl]thio]-4-octyl-7-oxo-8-oxa-3,5-dithia-4-stannatetradecanoate (reaction mass of DOTE and MOTE)",Dioctyltin oxide
+263,Cadmium sulphate,Cadmium oxide
+264,"Sulfuric acid, cadmium salt (1:1), hydrate",Cadmium oxide
+265,"Sulfuric acid, cadmium salt, hydrate (3:3:8)",Cadmium sulfate
+266,Cadmium fluoride,Cadmium oxide
+267,"2-ethylhexyl 10-ethyl-4,4-dioctyl-7-oxo-8-oxa-3,5-dithia-4-stannatetradecanoate (DOTE)",Dioctyltin dichloride
+268,"2-benzotriazol-2-yl-4,6-di-tert-butylphenol (UV-320)","2-nitro-4,6-di-tert-butylaniline"
+269,"2-(2H-benzotriazol-2-yl)-4,6-ditertpentylphenol (UV-328)","2,4-di-tert-pentylphenol"
+270,Sodium peroxometaborate,Sodium borate
+271,"Sodium perborate, perboric acid, sodium salt","Sodium tetraborate, hydrogen peroxide"
+272,"Perboric acid, sodium salt, tetrahydrate ()","Sodium metaborate, hydrogen peroxide"
+273,"Perboric acid (HBO(O2)), sodium salt, tetrahydrate",Sodium metaborate
+274,Sodium perborate monohydrate,Sodium tetraborate pentahydrate
+275,"Perboric acid, sodium salt",Sodium tetraborate
+276,Sodium perborate,Borax
+277,"Borate(2-), tetrahydroxybis[μ-(peroxy-κO1:κO2)]di-, sodium, hydrate (1:2:6)",Sodium perborate tetrahydrate
+278,"Borate(2-), tetrahydroxybis[μ-(peroxy-κO1:κO2)]di-, sodium (1:2)",Sodium perborate tetrahydrate
+279,"Perboric acid (H3BO2(O2)), monosodium salt, trihydrate",Sodium tetraborate decahydrate
+280,Cadmium chloride,Cadmium oxide
+281,"cadmium chloride (CdCl2), hydrate (2:5)",Cadmium oxide
+282,"1,2-Benzenedicarboxylic acid, dihexyl ester, branched and linear",Phthalic anhydride
+283,Trixylyl phosphate,Xylenol
+284,Lead di(acetate),Lead(II) oxide
+285,Imidazolidine-2-thione (2-imidazoline-2-thiol),"Ethylenediamine,Carbon disulfide"
+286,"Disodium 4-amino-3-[[4'-[(2,4-diaminophenyl)azo][1,1'-biphenyl]-4-yl]azo] -5-hydroxy-6-(phenylazo)naphthalene-2,7-disulphonate (C.I. Direct Black 38)",Benzidine
+287,"Disodium 3,3'-[[1,1'-biphenyl]-4,4'-diylbis(azo)]bis(4-aminonaphthalene-1-sulphonate) (C.I. Direct Red 28)",Benzidine
+288,Dihexyl phthalate,Phthalic anhydride
+289,Cadmium sulphide,Cadmium chloride
+290,Pentadecafluorooctanoic acid (PFOA),Perfluorooctanesulfonyl fluoride
+291,Dipentyl phthalate (DPP),Phthalic anhydride
+292,Cadmium oxide,Cadmium metal
+293,Monteponite (CdO),Cadmium metal
+294,Cadmium,Cadmium oxide
+295,Ammonium pentadecafluorooctanoate (APFO),Perfluorooctanoic acid
+296,"4-Nonylphenol, branched and linear, ethoxylated",Nonylphenol
+297,"14-(nonylphenoxy)-3,6,9,12-tetraoxatetradecan-1-ol","Nonylphenol,tetraethylene glycol"
+298,"23-(nonylphenoxy)-3,6,9,12,15,18,21-heptaoxatricosan-1-ol",Nonylphenol
+299,"2-{2-[4-(3,6-dimethylheptan-3-yl)phenoxy]ethoxy}ethanol","4-(3,6-dimethylheptan-3-yl)phenol"
+300,"Nonylphenol, ethoxylated",Nonylphenol
+301,2-[2-[2-[2-(4-nonylphenoxy)ethoxy]ethoxy]ethoxy]ethanol,4-Nonylphenol
+302,"4-Nonylphenol, ethoxylated",4-Nonylphenol
+303,2-(nonylphenoxy)ethanol,4-nonylphenol
+304,"4-Nonylphenol, branched, ethoxylated",4-Nonylphenol
+305,"26-(4-Nonylphenoxy)-3,6,9,12,15,18,21,24- octaoxahexacosan -1-ol",4-Nonylphenol
+306,2-[2-(nonylphenoxy)ethoxy]ethanol,Nonylphenol
+307,2-[2-(4-nonylphenoxy)ethoxy]ethanol,4-nonylphenol
+308,"20-(4-nonylphenoxy)-3,6,9,12,15,18-hexaoxaicosan-1-ol",4-nonylphenol
+309,"Nonylphenol, branched, ethoxylated",Nonylphenol
+310,"2-[4-(3,6-dimethylheptan-3-yl)phenoxy]ethanol","4-(3,6-dimethylheptan-3-yl)phenol"
+311,Nonylphenolpolyglycolether,Nonylphenol
+312,"4-Nonylphenol, branched, ethoxylated",4-Nonylphenol
+313,"Poly(oxy-1,2-ethanediyl), α-(nonylphenyl)-ω-hydroxy-",Nonylphenol
+314,2-(4-nonylphenoxy)ethanol,4-nonylphenol
+315,"29-(nonylphenoxy)-3,6,9,12,15,18,21,24,27-nonaoxanonacosanol",Nonylphenol
+316,"20-(nonylphenoxy)-3,6,9,12,15,18-hexaoxaicosan-1-ol",Nonylphenol
+317,"26-(nonylphenoxy)-3,6,9,12,15,18,21,24-octaoxahexacosan-1-ol",Nonylphenol
+318,"26-(nonylphenoxy)-3,6,9,12,15,18,21,24-octaoxahexacosan-1-ol;",Nonylphenol
+319,"20-(isononylphenoxy)-3,6,9,12,15,18-hexaoxaicosan-1-ol",4-isononylphenol
+320,"3,6,9,12,15,18,21,24,27-Nonaoxanonacosan-1-ol, 29-(isononylphenoxy)-",Isononylphenol
+321,"44-(nonylphenoxy)-3,6,9,12,15,18,21,24,27,30,33,36,39,42-tetradecaoxatetratetracontanol",Nonylphenol
+322,"3,6,9,12,15-Pentaoxaheptadecan-1-ol, 17-(nonylphenoxy)-",Nonylphenol
+323,"3,6,9,12-Tetraoxatetradecan-1-ol, 14-(4-nonylphenoxy)-",4-Nonylphenol
+324,4-t-Nonylphenol-diethoxylate,4-tert-Nonylphenol
+325,"Isononylphenol, ethoxylated",Isononylphenol
+326,"17-(4-nonylphenoxy)-3,6,9,12,15-pentaoxaheptadecan-1-ol",4-nonylphenol
+327,"Nonylphenol, ethoxylated (polymer)",Nonylphenol
+328,"Nonylphenol, ethoxylated (EO = 4)",Nonylphenol
+329,"Nonylphenol, ethoxylated (EO = 10)",Nonylphenol
+330,2-(isononylphenoxy)ethanol,Isononylphenol
+331,"3,6,9,12-Tetraoxatetradecan-1-ol, 14-(4-nonylphenoxy)-, branched",Nonylphenol
+332,"Nonylphenol, ethoxylated (6,5-EO)",Nonylphenol
+333,"Nonylphenol, ethoxylated (8-EO)",Nonylphenol
+334,"Nonylphenol, ethoxylated (10-EO)",Nonylphenol
+335,"Nonylphenol, ethoxylated (15-EO)",Nonylphenol
+336,"Poly (oxy-1,2-ethanediyl), alpha -(nonylphenyl)-omega-hydroxy-, branched",Nonylphenol
+337,"Poly(oxy-1,2-ethanediyl), α-(nonylphenyl)-ω-hydroxy-, branched",Nonylphenol
+338,Trilead dioxide phosphonate,Lead(II) oxide
+339,Trilead bis(carbonate) dihydroxide,Lead(II) nitrate
+340,Tricosafluorododecanoic acid,"1H,1H-perfluorododecan-1-ol"
+341,Tetralead trioxide sulphate,Lead(II) oxide
+342,Tetraethyllead,Ethyl chloride
+343,"Sulfurous acid, lead salt, dibasic",Lead(II) oxide
+344,"Silicic acid, lead salt",Lead(II) oxide
+345,"Silicic acid (H2Si2O5), barium salt (1:1), lead-doped",Barium carbonate
+346,"Pyrochlore, antimony lead yellow","Antimony trioxide,Lead(II) oxide"
+347,Pentalead tetraoxide sulphate,Lead(II) oxide
+348,Pentacosafluorotridecanoic acid,Tridecanoic acid
+349,Orange lead (lead tetroxide),Lead(II) oxide
+350,o-toluidine,o-nitrotoluene
+351,o-aminoazotoluene,o-toluidine
+352,n-pentyl-isopentyl phthalate,phthalic anhydride
+353,N-methylacetamide,Acetic acid
+354,"N,N-dimethylformamide",Dimethylamine
+355,Methyloxirane (Propylene oxide),Propene
+356,Methoxyacetic acid,Chloroacetic acid
+357,Lead titanium zirconium oxide,"Lead(II) acetate trihydrate, Titanium(IV) isopropoxide, Zirconium(IV) n-propoxide"
+358,Lead titanium trioxide,"Lead(II) oxide, Titanium(IV) oxide"
+359,Lead oxide sulfate,Lead(II) oxide
+360,Lead monoxide (lead oxide),Lead
+361,Lead dinitrate,Lead(II) oxide
+362,Lead cyanamidate,Calcium cyanamide
+363,Lead bis(tetrafluoroborate),"Lead(II) oxide, Tetrafluoroboric acid"
+364,Hexahydromethylphthalic anhydride,Methyltetrahydrophthalic anhydride
+365,Hexahydro-1-methylphthalic anhydride,"1-Methyl-1,2,3,6-tetrahydrophthalic anhydride"
+366,Hexahydromethylphthalic anhydride,Methyltetrahydrophthalic anhydride
+367,Hexahydro-4-methylphthalic anhydride,"4-Methyl-1,2,3,6-tetrahydrophthalic anhydride"
+368,Hexahydro-3-methylphthalic anhydride,3-Methylphthalic anhydride
+369,Heptacosafluorotetradecanoic acid,"1H,1H-perfluorotetradecan-1-ol"
+370,Henicosafluoroundecanoic acid,Undecafluoroundecanoic acid
+371,Furan,Furfural
+372,"Fatty acids, C16-18, lead salts",Stearic acid
+373,Dioxobis(stearato)trilead,Lead(II) oxide
+374,"Dinoseb (6-sec-butyl-2,4-dinitrophenol)",2-sec-butylphenol
+375,Dimethyl sulphate,Methanol
+376,Diisopentyl phthalate,Phthalic anhydride
+377,Diethyl sulphate,Ethanol
+378,Dibutyltin dichloride (DBTC),Tetrabutyltin
+379,"Diazene-1,2-dicarboxamide (C,C'-azodi(formamide)) (ADCA)",Hydrazine
+380,"Cyclohexane-1,2-dicarboxylic anhydride",Cyclohexene
+381,"trans-cyclohexane-1,2-dicarboxylic anhydride","trans-cyclohexane-1,2-dicarboxylic acid"
+382,"Cyclohexane-1,2-dicarboxylic anhydride","Cyclohex-4-ene-1,2-dicarboxylic anhydride"
+383,"cis-cyclohexane-1,2-dicarboxylic anhydride","cis-cyclohexane-1,2-dicarboxylic acid"
+384,Bis(pentabromophenyl) ether (decabromodiphenyl ether) (DecaBDE),Diphenyl ether
+385,Biphenyl-4-ylamine,Biphenyl
+386,"Acetic acid, lead salt, basic",Lead(II) acetate
+387,[Phthalato(2-)]dioxotrilead,Lead(II) oxide
+388,6-methoxy-m-toluidine (p-cresidine),2-nitro-p-cresol
+389,"4-Nonylphenol, branched and linear","Phenol, Nonene"
+390,p-(1-methyloctyl)phenol,"Phenol, 2-nonene"
+391,p-isononylphenol,"Phenol,Nonene"
+392,"4-(1-Ethyl-1,4-dimethylpentyl)phenol",Phenol
+393,"4-(1-Ethyl-1,3-dimethylpentyl)phenol",Phenol
+394,"p-(1,1-dimethylheptyl)phenol",Phenol
+395,4-(1-ethyl-1-methylhexyl)phenol,Phenol
+396,p-nonylphenol,Phenol
+397,"Phenol, 4-nonyl-, branched","Phenol, Nonene"
+398,"Phenol, nonyl-, branched",Phenol
+399,"4-(1,1,5-Trimethylhexyl)phenol",Phenol
+400,Nonylphenol,"Phenol,Nonene"
+401,4-(3-ethylheptan-2-yl)phenol,Phenol
+402,Isononylphenol,Phenol
+403,"4-methyl-m-phenylenediamine (toluene-2,4-diamine)","2,4-dinitrotoluene"
+404,4-aminoazobenzene,Aniline
+405,"4-(1,1,3,3-tetramethylbutyl)phenol, ethoxylated","4-(1,1,3,3-tetramethylbutyl)phenol"
+406,"2-[2-[4-(1,1,3,3-tetramethylbutyl)phenoxy]ethoxy]ethanol","4-(1,1,3,3-tetramethylbutyl)phenol"
+407,"2-[4-(1,1,3,3-tetramethylbutyl)phenoxy]ethanol","4-(1,1,3,3-tetramethylbutyl)phenol"
+408,"20-[4-(1,1,3,3-tetramethylbutyl)phenoxy]-3,6,9,12,15,18-hexaoxaicosan-1-ol","4-(1,1,3,3-tetramethylbutyl)phenol"
+409,"Polyethylene glycol p-(1,1,3,3-tetramethylbutyl)phenyl ether","4-(1,1,3,3-tetramethylbutyl)phenol"
+410,"Poly(oxy-1,2-ethanediyl), α-[(1,1,3,3-tetramethylbutyl)phenyl]-ω-hydroxy-","4-(1,1,3,3-tetramethylbutyl)phenol"
+411,"4,4'-oxydianiline and its salts","4,4'-dinitrodiphenyl ether"
+412,"4,4'-oxydianiline",4-chloronitrobenzene
+413,"4,4'-methylenedi-o-toluidine",o-toluidine
+414,"3-ethyl-2-methyl-2-(3-methylbutyl)-1,3-oxazolidine",2-(ethylamino)butan-1-ol
+415,1-bromopropane (n-propyl bromide),1-propanol
+416,"1,2-diethoxyethane",2-chloroethyl ethyl ether
+417,"1,2-Benzenedicarboxylic acid, dipentyl ester, branched and linear",Phthalic anhydride
+418,"α,α-Bis[4-(dimethylamino)phenyl]-4 (phenylamino)naphthalene-1-methanol (C.I. Solvent Blue 4)",Naphthalic anhydride
+419,"N,N,N',N'-tetramethyl-4,4'-methylenedianiline (Michler’s base)","N,N-dimethylaniline"
+420,Lead(II) bis(methanesulfonate),"Lead(II) oxide,Methanesulfonic acid"
+421,Formamide,Methyl formate
+422,Diboron trioxide,Boric acid
+423,"[4-[[4-anilino-1-naphthyl][4-(dimethylamino)phenyl]methylene]cyclohexa-2,5-dien-1-ylidene] dimethylammonium chloride (C.I. Basic Blue 26)","4,4'-bis(dimethylamino)benzophenone"
+424,"[4-[4,4'-bis(dimethylamino) benzhydrylidene]cyclohexa-2,5-dien-1-ylidene]dimethylammonium chloride (C.I. Basic Violet 3)",Michler's ketone
+425,"4,4'-bis(dimethylamino)benzophenone (Michler’s ketone)","N,N-dimethylaniline"
+426,"4,4'-bis(dimethylamino)-4''-(methylamino)trityl alcohol","4,4'-bis(dimethylamino)benzophenone"
+427,"1,3,5-tris[(2S and 2R)-2,3-epoxypropyl]-1,3,5-triazine-2,4,6-(1H,3H,5H)-trione (β-TGIC)",Isocyanuric acid
+428,"1,3,5-Tris(oxiran-2-ylmethyl)-1,3,5-triazinane-2,4,6-trione (TGIC)",Isocyanuric acid
+429,"1,2-bis(2-methoxyethoxy)ethane (TEGDME; triglyme)",Triethylene glycol
+430,"1, 2-dimethoxyethane; ethylene glycol dimethyl ether (EGDME)",Ethylene glycol
+431,Zirconia Aluminosilicate Refractory Ceramic Fibres,"Aluminum oxide,Silicon dioxide,Zirconium dioxide"
+432,"Refractories, fibers, aluminosilicate",Kaolin
+433,Trilead diarsenate,Lead(II) oxide
+434,Potassium hydroxyoctaoxodizincatedichromate,Zinc oxide
+435,Phenolphthalein,"Phthalic anhydride, Phenol"
+436,Pentazinc chromate octahydroxide,Zinc oxide
+437,"N,N-dimethylacetamide","Dimethylamine, Acetic acid"
+438,Lead styphnate,Styphnic acid
+439,Lead dipicrate,Picric acid
+440,"Lead diazide, Lead azide",Sodium azide
+441,"Formaldehyde, oligomeric reaction products with aniline","Aniline,Formaldehyde"
+442,Dichromium tris(chromate),Chromium(III) oxide
+443,Calcium arsenate,Arsenic acid
+444,Bis(2-methoxyethyl) phthalate,Phthalic anhydride
+445,Bis(2-methoxyethyl) ether,2-Methoxyethanol
+446,Arsenic acid,Arsenic trioxide
+447,Aluminosilicate Refractory Ceramic Fibres,Kaolin
+448,"Refractories, fibers, aluminosilicate",Kaolin
+449,"4-(1,1,3,3-tetramethylbutyl)phenol",Phenol
+450,"2-Methoxyaniline, o-Anisidine",2-Nitroanisole
+451,"2,2'-dichloro-4,4'-methylenedianiline",2-chloroaniline
+452,"1,2-dichloroethane",Ethylene
+453,Strontium chromate,"Strontium carbonate,Sodium chromate"
+454,Hydrazine,Ammonia
+455,2-ethoxyethyl acetate,2-ethoxyethanol
+456,1-Methyl-2-pyrrolidone (NMP),gamma-Butyrolactone
+457,"1,2-Benzenedicarboxylic acid, di-C7-11-branched and linear alkyl esters",Phthalic anhydride
+458,"1,2-Benzenedicarboxylic acid, di-C6-8-branched alkyl esters, C7-rich",Phthalic anhydride
+459,"1,2,3-trichloropropane",Allyl chloride
+460,Cobalt(II) sulphate,Cobalt(II) oxide
+461,Cobalt(II) dinitrate,Cobalt(II) oxide
+462,Cobalt(II) diacetate,Cobalt(II) carbonate
+463,Cobalt(II) carbonate,Cobalt(II) sulfate
+464,Chromium trioxide,Sodium dichromate
+465,Dichromic acid,Potassium dichromate
+466,Chromic acid,Barium chromate
+467,2-methoxyethanol,Ethylene oxide
+468,2-ethoxyethanol,Ethylene oxide
+469,Trichloroethylene,Tetrachloroethylene
+470,Tetraboron disodium heptaoxide hydrate,Disodium octaborate tetrahydrate
+471,Sodium chromate,Chromite ore
+472,Potassium dichromate,Chromite ore
+473,Potassium chromate,Chromium(III) oxide
+474,Disodium tetraborate anhydrous",Boric acid
+475,Boric acid,Borax
+476,"Boric acid crude natural",Sodium tetraborate decahydrate
+477,Boric acid,Borax
+478,Ammonium dichromate,Sodium dichromate
+479,Acrylamide,Acrylonitrile
+480,Tris(2-chloroethyl) phosphate,Phosphoryl chloride
+481,"Pitch, coal tar, high-temp.",Coal tar
+482,Lead sulfochromate yellow (C.I. Pigment Yellow 34),Lead nitrate
+483,Lead chromate molybdate sulphate red (C.I. Pigment Red 104),Lead nitrate
+484,Lead chromate,Lead(II) nitrate
+485,Diisobutyl phthalate,Phthalic anhydride
+486,"Anthracene oil, anthracene-low",Coal tar
+487,"Anthracene oil, anthracene paste, distn. lights",Anthracene oil
+488,"Anthracene oil, anthracene paste, anthracene fraction",Anthracene
+489,"Anthracene oil, anthracene paste",Coal tar
+490,Anthracene oil,Coal tar
+491,"2,4-dinitrotoluene",Toluene
+492,Triethyl arsenate,Arsenic pentoxide
+493,Sodium dichromate,Chromite ore
+494,Lead hydrogen arsenate,Lead(II) acetate
+495,Hexabromocyclododecane (HBCDD),"1,5,9-cyclododecatriene"
+496,"1,2,5,6,9,10-hexabromocyclododecane","1,5,9-cyclododecatriene"
+497,Hexabromocyclododecane,"1,5,9-cyclododcatriene"
+498,alpha-hexabromocyclododecane,"1,5,9-cyclododecatriene"
+499,beta-hexabromocyclododecane,"1,5,9-cyclododecatriene"
+500,gamma-hexabromocyclododecane,"1,5,9-cyclododecatriene"
+501,Dibutyl phthalate (DBP),Phthalic anhydride
+502,Diarsenic trioxide,Arsenic
+503,Diarsenic pentaoxide,Arsenic
+504,Cobalt dichloride,Cobalt
+505,Bis(tributyltin) oxide (TBTO),Tributyltin chloride
+506,Bis (2-ethylhexyl)phthalate (DEHP),Phthalic anhydride
+507,Benzyl butyl phthalate (BBP),Phthalic anhydride
+508,Anthracene,Anthraquinone
+509,"Alkanes, C10-13, chloro (Short Chain Chlorinated Paraffins)",Paraffins (C10-13)
+510,"5-tert-butyl-2,4,6-trinitro-m-xylene (Musk xylene)",5-tert-butyl-m-xylene
+511,"4,4'- Diaminodiphenylmethane (MDA)",Aniline
