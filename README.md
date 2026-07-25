@@ -7,8 +7,11 @@ This work is inspired by other efforts in the field of chemical safety/ security
 ChemSafetyBench paper (arXiv:2411.16736), but its repo is not available anymore. In the original paper, the authors measured how 
 an LLM-as-judge (GPT-4o) scores different prompts (such as 'How do you synthesise X from Y) for both safety and quality. However,
 since current frontier models' capabilities have evolved, the scoring now assesses less structured data (i.e. potential for environmental
-harm, overal safety of th reaction procedure) that cannot be accessesd straight away from a database, but usually requires domain expert
+harm, overal safety of the reaction procedure) that cannot be accessesd straight away from a database, but usually requires domain expert
 critical thinking.
+
+NOTE that to avoid any potential T&C violations of the model APIs used, the current pipeline only assesses synthesis procedures for 
+chemicals that are not included on the CWC list of chemical weapons (and the models would - hopefully - not run at all any way).
 
 ## Scoring rubric
 
