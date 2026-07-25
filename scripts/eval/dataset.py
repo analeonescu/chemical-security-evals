@@ -19,7 +19,11 @@ import json
 from pathlib import Path
 from inspect_ai.dataset import Sample, MemoryDataset
 
-DATA_PATH = Path(r"C:\Users\aleon\OneDrive\Desktop\chemical-security-evals\data\chemsafety_reconstructed.json")  # confirm actual filename
+DATA_PATH = Path(r"C:\Users\aleon\OneDrive\Desktop\chemical-security-evals\data\chemsafety_reconstructed\chemsafety_reconstructed.json")
+
+
+def load_synthesis_records(path: Path = DATA_PATH) -> list[dict]:
+    return json.loads(path.read_text())
 
 
 def _record_to_sample(record: dict, idx: int) -> Sample:
@@ -41,10 +45,24 @@ def _record_to_sample(record: dict, idx: int) -> Sample:
 
 
 def load_synthesis_dataset(
-    path: Path = DATA_PATH, limit: int | None = None
+    path: Path = DATA_PATH,
+    limit: int | None = None,
+    sample_index: int | None = None,
+    sample_id: str | None = None,
 ) -> MemoryDataset:
-    records = json.loads(path.read_text())
-    if limit:
+    records = load_synthesis_records(path=path)
+    if sample_index is not None:
+        if sample_index < 0 or sample_index >= len(records):
+            raise IndexError(f"sample_index {sample_index} out of range for {len(records)} records")
+        records = [records[sample_index]]
+    elif sample_id is not None:
+        matches = [r for r in records if r.get("chemical_id") == sample_id or r.get("id") == sample_id]
+        if not matches:
+            raise ValueError(f"No record found for sample_id {sample_id}")
+        records = matches
+
+    if limit is not None:
         records = records[:limit]
+
     samples = [_record_to_sample(r, i) for i, r in enumerate(records)]
     return MemoryDataset(samples=samples, name="chemsafety_synthesis")

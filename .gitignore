@@ -61,7 +61,7 @@ chemsafety_reconstructed.json
 *.swp
 *~
 
-__pychache__/
+__pycache__/
 
 .vscode/
 

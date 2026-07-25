@@ -1,0 +1,261 @@
+"""Wrapper for running Inspect AI evals in a repeatable way.
+
+Examples:
+
+eval:
+    python run_inspect_eval.py --limit 10
+    python run_inspect_eval.py --per-sample
+    python run_inspect_eval.py --per-sample --start 0 --limit 10
+    python run_inspect_eval.py --per-sample --limit 100 --max-concurrency 8
+
+eval + judge:
+    python run_inspect_eval.py --per-sample --judge --judge-model google/gemini-3.1-flash-lite
+    
+for only judging, use ./score_eval.py
+
+The script reads defaults from inspect_eval_defaults.json, can launch one eval
+per prompt sample, and optionally score generated logs with a judge model.
+"""
+
+from __future__ import annotations
+
+import argparse
+import asyncio
+import json
+import os
+import subprocess
+import sys
+from pathlib import Path
+from typing import Any, Dict, Optional
+
+from scripts.eval.dataset import DATA_PATH, load_synthesis_records
+
+
+def load_config(config_path: Path) -> Dict[str, Any]:
+    if not config_path.exists():
+        return {}
+
+    with config_path.open("r", encoding="utf-8") as handle:
+        return json.load(handle)
+
+
+def build_parser() -> argparse.ArgumentParser:
+    parser = argparse.ArgumentParser(
+        description="Run Inspect AI evals from a config file."
+    )
+
+    parser.add_argument("--config", default="inspect_eval_defaults.json",
+        help="Path to a JSON config file; in the future, this should be changed to a .config format.",
+    )
+    parser.add_argument("--task", help="Task file to evaluate")
+    parser.add_argument("--model",help="Model to use for evaluation")
+    parser.add_argument("--limit",type=int,help="Maximum number of prompts to process",)
+    parser.add_argument("--start",type=int,default=0,help="Starting prompt index")
+    parser.add_argument("--per-sample",action="store_true",help="Run one eval per prompt sample",)
+    parser.add_argument("--max-concurrency",type=int,default=10,
+                        help="Maximum number of eval processes running simultaneously"
+                        )
+    parser.add_argument("--judge",action="store_true",help="Score generated eval logs after evaluation")
+    parser.add_argument("--judge-model",help="Model to use as judge")
+    parser.add_argument("--dry-run",action="store_true",help="Print commands without running them")
+    parser.add_argument("extra_args",nargs=argparse.REMAINDER,help="Additional Inspect AI CLI args")
+
+    return parser
+
+
+def shutil_which(name: str) -> Optional[str]:
+    for path in os.environ.get("PATH","").split(os.pathsep):
+        candidate = os.path.join(path, name)
+        if os.path.isfile(candidate):
+            return candidate
+    return None
+
+
+def build_inspect_command(command: list[str]) -> list[str]:
+    if shutil_which("inspect"):
+        return ["inspect"] + command
+
+    return [sys.executable,"-m","inspect_ai"] + command
+
+
+async def run_sample(idx: int, semaphore: asyncio.Semaphore, task: str,
+                     model: str, extra_args: list[str]) -> int:
+    async with semaphore:
+        command = ["eval",task,"--model",model,"--limit","1","-T",f"sample_index={idx}",]
+        command.extend(extra_args)
+        full_command = build_inspect_command(command)
+        print(f"\nRunning sample {idx}:")
+        print(" ".join(full_command))
+
+        process = await asyncio.create_subprocess_exec(*full_command,cwd=str(Path.cwd()))
+
+        return_code = await process.wait()
+
+        if return_code != 0:
+            print(f"Sample {idx} failed with exit code {return_code}")
+
+        return return_code
+
+
+async def run_samples(start: int, end: int, task: str, model: str, extra_args: list[str], 
+                      max_concurrency: int) -> int:
+    semaphore = asyncio.Semaphore(max_concurrency)
+
+    tasks = [asyncio.create_task(
+        run_sample(
+                idx=idx,
+                semaphore=semaphore,
+                task=task,
+                model=model,
+                extra_args=extra_args,
+            )
+        )
+        for idx in range(start, end)
+    ]
+
+    for task_result in asyncio.as_completed(tasks):
+        return_code = await task_result
+
+        if return_code != 0:
+            for task in tasks:
+                task.cancel()
+
+            return return_code
+
+    return 0
+
+
+def find_eval_logs_after_run() -> list[Path]:
+    log_dir = Path.cwd() / "logs"
+
+    if not log_dir.exists():
+        return []
+
+    return sorted(
+        log_dir.glob("*.eval"),
+        key=lambda path: path.stat().st_mtime,  # can change depending on name convention
+    )
+
+
+async def score_logs(logs: list[Path], judge_model: str) -> int:
+    for log_path in logs:
+        command = ["score",str(log_path),"--model",judge_model]
+        full_command = build_inspect_command(command)
+
+        print("\nScoring:")
+        print(" ".join(full_command))
+
+        process = await asyncio.create_subprocess_exec(
+            *full_command,
+            cwd=str(Path.cwd()),
+        )
+
+        return_code = await process.wait()
+
+        if return_code != 0:
+            return return_code
+
+    return 0
+
+
+async def main() -> int:
+    parser = build_parser()
+    args = parser.parse_args()
+
+    if args.max_concurrency < 1:
+        raise ValueError("--max-concurrency must be >= 1")
+
+    if args.judge and not args.judge_model:
+        raise ValueError("--judge requires --judge-model")
+
+    config_path = Path(args.config)
+
+    if not config_path.is_absolute():
+        config_path = (Path.cwd() / config_path).resolve()
+
+    config = load_config(config_path)
+
+    task = args.task or config.get("task","task.py")
+
+    model = args.model or config.get("model","google/gemini-3.5-flash-lite")
+
+    limit = (args.limit if args.limit is not None else config.get("limit", 10))
+
+    extra_args = list(args.extra_args or [])
+
+    if not extra_args and "extra_args" in config:
+        extra_args = list(
+            config.get("extra_args", [])
+        )
+
+    if args.per_sample:
+        records = load_synthesis_records(DATA_PATH)
+
+        end = (min(len(records), args.start + limit) if limit is not None
+            else len(records)
+        )
+
+        if args.dry_run:
+            for idx in range(args.start, end):
+                command = ["eval",task,"--model",model,"--limit","1","-T",
+                           f"sample_index={idx}"]
+
+                command.extend(extra_args)
+                print("Would run:")
+                print("inspect "+ " ".join(command))
+
+            return 0
+
+        result = await run_samples(
+            start=args.start,
+            end=end,
+            task=task,
+            model=model,
+            extra_args=extra_args,
+            max_concurrency=args.max_concurrency,
+        )
+
+        if result != 0:
+            return result
+
+    else:
+        command = ["eval",task,"--model",model,"--limit",str(limit)]
+        command.extend(extra_args)
+
+        if args.dry_run:
+            print("Would run:")
+            print("inspect " + " ".join(command))
+            return 0
+
+        full_command = build_inspect_command(command)
+
+        print("Running:")
+        print(" ".join(full_command))
+
+        completed = subprocess.run(
+            full_command,
+            cwd=str(Path.cwd()),
+        )
+
+        if completed.returncode != 0:
+            return int(completed.returncode)
+
+    if args.judge:
+        logs = find_eval_logs_after_run()
+
+        if not logs:
+            print("No eval logs found to score.")
+            return 1
+
+        return await score_logs(
+            logs=logs,
+            judge_model=args.judge_model,
+        )
+
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(
+        asyncio.run(main())
+    )

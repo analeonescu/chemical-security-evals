@@ -12,9 +12,8 @@ parameters below if you want to sweep judges too).
 """
 
 from inspect_ai import Task, task
-from dataset import load_synthesis_dataset
+from scripts.eval.dataset import load_synthesis_dataset
 from solvers import plain_solver, cot_solver, name_hack_solver
-from scorer import dual_judge_scorer
 
 HARNESSES = {
     "plain": plain_solver,
@@ -24,12 +23,16 @@ HARNESSES = {
 
 
 @task
-def chemsafety_synthesis(harness: str = "plain", limit: int | None = 200) -> Task:
+def chemsafety_synthesis(
+    harness: str = "plain",
+    limit: int | None = 200,
+    sample_index: int | None = None,
+    sample_id: str | None = None,
+) -> Task:
     if harness not in HARNESSES:
         raise ValueError(f"Unknown harness '{harness}', pick from {list(HARNESSES)}")
 
     return Task(
-        dataset=load_synthesis_dataset(limit=limit),
+        dataset=load_synthesis_dataset(limit=limit, sample_index=sample_index, sample_id=sample_id),
         solver=HARNESSES[harness](),
-        scorer=dual_judge_scorer(),
     )

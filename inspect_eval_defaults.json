@@ -1,0 +1,5 @@
+{
+  "task": "scripts/eval/task.py",
+  "model": "google/gemini-2.5-flash",
+  "limit": 10
+}
