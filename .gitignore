@@ -53,9 +53,6 @@ htmlcov/
 .coverage
 .coverage.*
 
-# Optional: ignore dataset build output if generated locally
-chemsafety_reconstructed.json
-
 # Ignore temporary files
 *.tmp
 *.swp
@@ -65,3 +62,5 @@ __pycache__/
 
 .vscode/
 
+results/
+data/
