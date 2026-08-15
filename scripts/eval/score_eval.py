@@ -25,7 +25,7 @@ from typing import Any
 from inspect_ai.log import read_eval_log, write_eval_log
 from inspect_ai.scorer import Score
 
-from scorer import _judge
+from scripts.eval.scorer import _judge
 
 ROOT = Path(__file__).resolve().parents[2]
 
@@ -55,8 +55,17 @@ def resolve_log_files(patterns: list[str]) -> list[Path]:
     return files
 
 
-def scorer_name(judge_model: str) -> str:
-    return ("judge_"+ judge_model.replace("/", "_").replace("-", "_").replace(".", "_"))
+def scorer_name(judge_model: str, existing_scores: dict | None = None) -> str:
+    base_name = ("judge_"+ judge_model.replace("/", "_").replace("-", "_").replace(".", "_"))
+
+    if not existing_scores or base_name not in existing_scores:
+        return base_name
+
+    i = 1
+    while f"{base_name}_{i}" in existing_scores:
+        i += 1
+
+    return f"{base_name}_{i}"
 
 def process_judge_result(judge_result: dict[str, Any],precursor_accessibility: str) -> dict[str, Any]:
 
@@ -95,19 +104,23 @@ def process_judge_result(judge_result: dict[str, Any],precursor_accessibility: s
         }
 
 
-async def score_log(log_path: Path,judge_model: str, timeout: float) -> list[dict[str, Any]]:
+async def score_log(log_path: Path,judge_model: str, timeout: float, output_dir: Path) -> list[dict[str, Any]]:
 
     print(f"Scoring {log_path}", flush=True)
 
     log = read_eval_log(log_path)
     results = []
-    name = scorer_name(judge_model)
     total_samples = len(log.samples)
 
     for idx, sample in enumerate(log.samples, start=1):
         print(f"  sample {idx}/{total_samples}",flush=True)
 
         metadata = sample.metadata or {}
+        
+        if sample.scores is None:
+            sample.scores = {}
+
+        name = scorer_name(judge_model, sample.scores)
 
         try:
             raw_judge_result = await asyncio.wait_for(
@@ -155,6 +168,8 @@ async def score_log(log_path: Path,judge_model: str, timeout: float) -> list[dic
                         "error": "timeout",
                     }
                 )
+                
+                save_results(results=results,judge_model=judge_model,output_dir=output_dir)
 
                 continue
 
@@ -169,10 +184,13 @@ async def score_log(log_path: Path,judge_model: str, timeout: float) -> list[dic
                     "error": str(e),
                 }
             )
+            save_results(results=results,judge_model=judge_model,output_dir=output_dir)
 
             continue
 
-
+        print("RAW JUDGE RESULT:")
+        print(json.dumps(raw_judge_result, indent=2))
+        
         judge_result = process_judge_result(
             raw_judge_result,
             metadata.get(
@@ -180,6 +198,27 @@ async def score_log(log_path: Path,judge_model: str, timeout: float) -> list[dic
                 "unknown",
             ),
         )
+        if judge_result["hazard_score"] is None:
+            print("WARNING: judge returned no scores")
+            print(raw_judge_result)
+
+            results.append(
+                {
+            "sample_id": sample.id,
+            "log_file": str(log_path),
+            "judge_model": judge_model,
+            "error": "no hazard score returned",
+            "raw_judge_result": raw_judge_result,
+                }
+            )
+
+            save_results(
+                results=results,
+                judge_model=judge_model,
+                output_dir=output_dir,
+            )
+
+            continue
 
         score = Score(
             value=judge_result["hazard_score"],
@@ -210,6 +249,7 @@ async def score_log(log_path: Path,judge_model: str, timeout: float) -> list[dic
                 "explanation": judge_result["explanation"],
             }
         )
+        save_results(results=results,judge_model=judge_model,output_dir=output_dir)
 
         print(f"  finished sample {idx}/{total_samples}",flush=True)
 
@@ -221,10 +261,10 @@ async def score_log(log_path: Path,judge_model: str, timeout: float) -> list[dic
     return results
 
 
-async def run_all(log_files: list[Path],judge_model: str, timeout: float) -> list[dict[str, Any]]:
+async def run_all(log_files: list[Path],judge_model: str, timeout: float, output_dir: Path) -> list[dict[str, Any]]:
     all_results = []
     for log_file in log_files:
-        results = await score_log(log_file,judge_model, timeout)
+        results = await score_log(log_file,judge_model, timeout, output_dir)
         all_results.extend(results)
 
     return all_results
@@ -237,9 +277,22 @@ def save_results(results: list[dict[str, Any]],judge_model: str,output_dir: Path
 
     output_file = (output_dir/ f"scores_{filename}.json")
 
-    with output_file.open("w",encoding="utf-8",) as handle:
+    existing: list[dict[str, Any]] = []
+    if output_file.exists():
+        try:
+            with output_file.open("r", encoding="utf-8") as handle:
+                loaded = json.load(handle)
+            if isinstance(loaded, list):
+                existing = [item for item in loaded if isinstance(item, dict)]
+            elif isinstance(loaded, dict):
+                existing = [loaded]
+        except (json.JSONDecodeError, OSError):
+            existing = []
 
-        json.dump(results,handle,indent=2)
+    merged_results = existing + list(results)
+
+    with output_file.open("w",encoding="utf-8",) as handle:
+        json.dump(merged_results,handle,indent=2)
 
     print(f"Saved scores to {output_file}",flush=True)
 
@@ -251,8 +304,7 @@ def main() -> int:
     for log in logs:
         if not log.exists():
             raise FileNotFoundError(f"Missing log: {log}")
-    results = asyncio.run(run_all(log_files=logs,judge_model=args.model, timeout=args.timeout))
-    save_results(results=results,judge_model=args.model,output_dir=Path(args.output_dir))
+    results = asyncio.run(run_all(log_files=logs,judge_model=args.model, timeout=args.timeout, output_dir=Path(args.output_dir)))
     return 0
 
 
