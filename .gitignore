@@ -18,10 +18,9 @@ build/
 # IDE/editor directories
 .vscode/
 .idea/
-.ipynb_checkpoints/
 
 # Jupyter Notebook
-*.ipynb_checkpoints
+.ipynb_checkpoints/
 
 # Logs
 logs/
@@ -30,9 +29,6 @@ logs/
 # OS files
 .DS_Store
 Thumbs.db
-
-# Python virtual environments created by beaker or Jupyter
-.ipynb_checkpoints
 
 # Local environment variables
 .env
@@ -53,14 +49,11 @@ htmlcov/
 .coverage
 .coverage.*
 
-# Ignore temporary files
+# Temporary files
 *.tmp
 *.swp
 *~
 
-__pycache__/
-
-.vscode/
-
+# Project outputs / local data
 results/
 data/
