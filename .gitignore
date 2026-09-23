@@ -57,3 +57,6 @@ htmlcov/
 # Project outputs / local data
 #results/
 #data/
+
+# Local-only drafts (not ready to publish)
+PAPER_DRAFT.md

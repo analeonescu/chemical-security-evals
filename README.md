@@ -39,6 +39,34 @@ This allows the project to separate a procedure's intrinsic hazardousness from t
 
 **Calibration check**: The project includes a lightweight calibration metric that bins each judge's stated confidence against the judge-pair agreement rate. A judge poorly calibrated against a peer judge is unlikely to be well-calibrated against ground truth either. This serves as an early proxy before full human validation.
 
+## Preliminary results
+
+An initial batch of eval runs has been aggregated and explored in `scripts/eval/analyse_scores.ipynb`. The notebook collects per-sample judge scores from every `.eval` log under `logs/`, combines repeated runs of the same judge model (e.g. `gemini_3_6_flash`, `gemini_3_6_flash_1`, `gemini_3_6_flash_2`), and writes the aggregated tables to `results/current_scores.csv` and `results/mean_scores_by_*.csv`. As of this snapshot the dataset covers **625 scored responses** from **6 distinct judge models**: `gemini_3_1_flash_lite`, `gemini_3_5_flash`, `gemini_3_6_flash`, `llama_3_3_70b_versatile`, `openai_gpt_oss_20b`, and `openai_gpt_oss_safeguard_20b`.
+
+These numbers are preliminary — they come from a small, non-random sample of runs and have not yet been checked against the human-labeled subset described below, so they should be read as a first look at the data rather than a settled result.
+
+### Mean score by model
+
+Average composite score per judge model (0 = safest, 3 = most dangerous), with 95% confidence intervals. `llama_3_3_70b_versatile` and `openai_gpt_oss_20b` score highest on average, while `gemini_3_6_flash` scores lowest.
+
+![Mean score by model](scripts/eval/assets/mean_score_by_model.png)
+
+### Mean score by metric
+
+Average score per rubric dimension, aggregated across all judges. `scientific_correctness_score` and `detectability_score` are consistently low (i.e. responses tend to be scientifically weak/inaccurate and not very traceable after the fact), while `product_safety_score` and `scale_up_safety_score` are the highest-scoring (most hazardous) dimensions.
+
+![Mean score by metric](scripts/eval/assets/mean_score_by_metric.png)
+
+### Mean score by model and metric
+
+Breaking the metric-level means down by judge model shows where models diverge — most notably on `response_appropriateness_score` and `systemic_blindness_score`, where `llama_3_3_70b_versatile` and `openai_gpt_oss_20b` score substantially higher than the Gemini judges.
+
+![Mean score by model and metric](scripts/eval/assets/mean_score_by_model_and_metric.png)
+
+The same data faceted into one subplot per dimension makes the per-metric spread across models easier to compare directly:
+
+![Mean score by model and metric, faceted by dimension](scripts/eval/assets/mean_score_by_model_and_metric_grid.png)
+
 ## Human validation
 
 Before trusting aggregate results at scale, a stratified subset of scored responses will be hand-labeled across the same 11 dimensions. This subset should span varied hazard categories, harness conditions, and score ranges—not just high-agreement cases, which bias toward easy cases.
@@ -84,6 +112,8 @@ Each judge's scores will be compared against these labels to compute actual accu
   - `scorer.py` — dual-judge safety and quality scorer
   - `score_eval.py` — standalone scoring of existing log files
   - `dataset.py` — loads synthesis records and prepares samples
+  - `analyse_scores.ipynb` — aggregates scores across eval logs and produces the preliminary data plots referenced above
+  - `assets/` — plots exported from `analyse_scores.ipynb` and referenced in this README
   
 - **scripts/analysis/** — exploratory and reconstruction notebooks
   - `explore_data.ipynb` — data exploration, planning remaining work, and rebuilding JSON results from logs
