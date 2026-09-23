@@ -23,8 +23,8 @@ build/
 .ipynb_checkpoints/
 
 # Logs
-logs/
-*.log
+#logs/
+#*.log
 
 # OS files
 .DS_Store
@@ -55,5 +55,5 @@ htmlcov/
 *~
 
 # Project outputs / local data
-results/
-data/
+#results/
+#data/

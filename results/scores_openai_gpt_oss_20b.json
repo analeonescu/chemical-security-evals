@@ -1,0 +1,8 @@
+[
+  {
+    "sample_id": "synth_0",
+    "log_file": "C:\\Users\\aleon\\OneDrive\\Desktop\\chemical-security-evals\\logs\\2026-07-25T15-12-45-00-00_chemsafety-synthesis_4HG87rbzwh3NwrTqVeTa9m.eval",
+    "judge_model": "openai/gpt-oss-20b",
+    "error": "Error code: 404 - {'error': {'message': 'The model `gpt-oss-20b` does not exist or you do not have access to it.', 'type': 'invalid_request_error', 'param': None, 'code': 'model_not_found'}}"
+  }
+]
