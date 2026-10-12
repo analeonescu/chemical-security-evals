@@ -1,3 +1,4 @@
-inspect-ai>=0.3.60
-google-genai
-groq
+inspect-ai==0.3.277
+google-genai==2.29.0
+groq==1.7.0
+pytest==9.1.1

@@ -7,6 +7,7 @@ __pycache__/
 .Python
 env/
 venv/
+.venv/
 ENV/
 .build/
 dist/
@@ -30,9 +31,10 @@ build/
 .DS_Store
 Thumbs.db
 
-# Local environment variables
+# Local environment variables (the .example template stays tracked)
 .env
 .env.*
+!.env.example
 
 # Package manager files
 pip-log.txt
@@ -60,3 +62,14 @@ data/
 
 # Local-only drafts (not ready to publish)
 PAPER_DRAFT.md
+PRECURSOR_LIST_PROVENANCE.md
+
+
+# Log folder index cache (rebuilt automatically)
+logs/.pair_index.json
+
+# Throwaway smoke-test logs
+logs/_smoke/
+
+# Eval run lock
+logs/.run.lock

@@ -75,18 +75,25 @@ Each judge's scores will be compared against these labels to compute actual accu
 
 ## Quick start
 
-1. Set API keys:
+Use Python 3.10 or newer.
+
+1. Set API keys. Copy the template and fill it in once:
 
    ```bash
-   export GOOGLE_API_KEY="..."
-   export GROQ_API_KEY="..."
+   cp .env.example .env
    ```
+
+   `.env` is gitignored and read automatically by every entry point, so the
+   keys do not need exporting in each shell. A variable exported in the shell
+   still takes precedence over the file.
 
 2. Install dependencies:
 
    ```bash
    pip install -r requirements.txt
    ```
+
+  For development and tests, install `requirements-dev.txt` instead.
 
 3. Run a smoke test:
 
@@ -99,6 +106,23 @@ Each judge's scores will be compared against these labels to compute actual accu
    ```bash
    python scripts/eval/run_inspect_eval.py --limit 10
    ```
+
+5. Choose a dataset. Evaluations default to
+   `data/chemsafety_reconstructed/chemsafety_reconstructed.json`. Use `--dataset`
+   with a path or a bare file name from that directory to select another:
+
+   ```bash
+   python scripts/eval/run_inspect_eval.py --dataset svhc --limit 10
+   ```
+
+   When calling Inspect directly, the same selection is a task parameter:
+
+   ```bash
+   inspect eval scripts/eval/task.py --model google/gemini-3.5-flash-lite \
+     -T dataset_path=svhc --limit 10
+   ```
+
+  Run the regression tests with `python -m pytest`.
 
 ## Project structure
 

@@ -13,12 +13,21 @@ parameters below if you want to sweep judges too).
 
 from __future__ import annotations
 
+import sys
 from pathlib import Path
 
 from inspect_ai import Task, task
 from inspect_ai.solver import Solver, generate, prompt_template
 
-from scripts.eval.dataset import load_synthesis_dataset
+# Inspect loads this file by path, so the repo root is not necessarily on
+# sys.path -- whether it is depends on the working directory and which
+# interpreter runs `inspect`. Put it there explicitly so `scripts.eval.*`
+# imports resolve however the task is launched.
+ROOT = Path(__file__).resolve().parents[2]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
+
+from scripts.eval.dataset import load_synthesis_dataset  # noqa: E402
 
 
 def _load_prompt_override(eval_dir: str | None, prompt_file: str | None = None) -> str | None:
@@ -73,11 +82,17 @@ def chemsafety_synthesis(
     eval_dir: str | None = None,
     prompt_file: str | None = None,
     prompt_text: str | None = None,
+    dataset_path: str | None = None,
 ) -> Task:
     prompt_override = prompt_text or _load_prompt_override(eval_dir=eval_dir, prompt_file=prompt_file)
     solver = _build_solver(harness=harness, prompt_text=prompt_override)
 
     return Task(
-        dataset=load_synthesis_dataset(limit=limit, sample_index=sample_index, sample_id=sample_id),
+        dataset=load_synthesis_dataset(
+            path=dataset_path,
+            limit=limit,
+            sample_index=sample_index,
+            sample_id=sample_id,
+        ),
         solver=solver,
     )
