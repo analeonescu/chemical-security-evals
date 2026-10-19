@@ -1,0 +1,8 @@
+# Development and test dependencies. Installing this also installs the
+# runtime requirements.
+-r requirements.txt
+
+pytest==9.1.1
+# Running analyse_scores.ipynb as a kernel in the IDE.
+ipykernel==7.4.0
+nbformat==5.11.1

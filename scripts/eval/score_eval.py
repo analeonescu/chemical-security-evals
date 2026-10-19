@@ -21,23 +21,25 @@ import glob
 import json
 import sys
 import uuid
-from scripts.eval.env import load_env
-from scripts.eval.scorer import (
+from pathlib import Path
+from typing import Any
+
+# Must precede the scripts.* imports: running this file directly puts its own
+# directory on sys.path, not the repo root.
+ROOT = Path(__file__).resolve().parents[2]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
+
+from inspect_ai.log import read_eval_log, write_eval_log  # noqa: E402
+from inspect_ai.scorer import Score  # noqa: E402
+
+from scripts.eval.env import load_env  # noqa: E402
+from scripts.eval.scorer import (  # noqa: E402
     DIMENSIONS,
     EXPOSURE_WEIGHTS,
     _judge,
     validate_judge_output,
 )
-from pathlib import Path
-from typing import Any
-from inspect_ai.log import read_eval_log, write_eval_log
-from inspect_ai.scorer import Score
-
-
-ROOT = Path(__file__).resolve().parents[2]
-
-if str(ROOT) not in sys.path:
-    sys.path.insert(0, str(ROOT))
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -49,6 +51,12 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--model",required=True,help="Judge model to use.")
     parser.add_argument("--output-dir",default="results",help="Directory for JSON score outputs.")
     parser.add_argument("--timeout", type = float, default=300,help="judge timout")
+    parser.add_argument("--skip-scored", action="store_true",
+                        help="Skip samples this judge has already scored, so a re-run "
+                             "extends coverage instead of adding repeat scores")
+    parser.add_argument("--max-consecutive-errors", type=int, default=5,
+                        help="Give up on this judge after N failures in a row and exit 2, "
+                             "so a caller can move on to the next model (0 disables)")
     return parser
 
 def resolve_log_files(patterns: list[str]) -> list[Path]:
@@ -60,6 +68,19 @@ def resolve_log_files(patterns: list[str]) -> list[Path]:
         else:
             files.append(Path(pattern).resolve())
     return files
+
+
+class JudgeUnavailable(RuntimeError):
+    """Raised when a judge fails repeatedly, so the caller can move on."""
+
+
+def already_scored_by(sample, judge_model: str) -> bool:
+    """True if this sample already carries a score from this judge."""
+    for score in (sample.scores or {}).values():
+        metadata = getattr(score, "metadata", None) or {}
+        if metadata.get("judge_model") == judge_model:
+            return True
+    return False
 
 
 def scorer_name(judge_model: str, existing_scores: dict | None = None) -> str:
@@ -110,6 +131,9 @@ async def score_log(
     timeout: float,
     output_dir: Path,
     judge_run_id: str | None = None,
+    skip_scored: bool = False,
+    max_consecutive_errors: int = 0,
+    error_state: dict | None = None,
 ) -> list[dict[str, Any]]:
 
     print(f"Scoring {log_path}", flush=True)
@@ -120,6 +144,15 @@ async def score_log(
     model_under_test = getattr(eval_info, "model", None)
     results = []
     total_samples = len(log.samples)
+    error_state = error_state if error_state is not None else {"consecutive": 0}
+
+    def note_failure(reason: str) -> None:
+        error_state["consecutive"] += 1
+        if max_consecutive_errors and error_state["consecutive"] >= max_consecutive_errors:
+            raise JudgeUnavailable(
+                f"{judge_model}: {error_state['consecutive']} consecutive failures "
+                f"(last: {reason})"
+            )
 
     for idx, sample in enumerate(log.samples, start=1):
         print(f"  sample {idx}/{total_samples}",flush=True)
@@ -137,6 +170,10 @@ async def score_log(
         
         if sample.scores is None:
             sample.scores = {}
+
+        if skip_scored and already_scored_by(sample, judge_model):
+            print("    already scored by this judge, skipping", flush=True)
+            continue
 
         name = scorer_name(judge_model, sample.scores)
 
@@ -184,6 +221,7 @@ async def score_log(
                         "error": "timeout",
                     }
                 )
+                note_failure("timeout")
                 
                 save_results(results=[results[-1]], judge_model=judge_model, output_dir=output_dir)
 
@@ -198,6 +236,7 @@ async def score_log(
                     "error": str(e),
                 }
             )
+            note_failure(str(e)[:120])
             save_results(results=[results[-1]], judge_model=judge_model, output_dir=output_dir)
 
             continue
@@ -261,6 +300,7 @@ async def score_log(
         )
         save_results(results=[results[-1]], judge_model=judge_model, output_dir=output_dir)
 
+        error_state["consecutive"] = 0
         print(f"  finished sample {idx}/{total_samples}",flush=True)
 
 
@@ -276,16 +316,25 @@ async def run_all(
     judge_model: str,
     timeout: float,
     output_dir: Path,
+    skip_scored: bool = False,
+    max_consecutive_errors: int = 0,
 ) -> list[dict[str, Any]]:
     judge_run_id = uuid.uuid4().hex
     all_results = []
-    for log_file in log_files:
+    # Shared across logs so a judge that is down is detected quickly.
+    error_state = {"consecutive": 0}
+
+    for index, log_file in enumerate(log_files, start=1):
+        print(f"[{index}/{len(log_files)}] {log_file.parent.name}/{log_file.name}", flush=True)
         results = await score_log(
             log_file,
             judge_model,
             timeout,
             output_dir,
             judge_run_id=judge_run_id,
+            skip_scored=skip_scored,
+            max_consecutive_errors=max_consecutive_errors,
+            error_state=error_state,
         )
         all_results.extend(results)
 
@@ -351,7 +400,19 @@ def main() -> int:
     for log in logs:
         if not log.exists():
             raise FileNotFoundError(f"Missing log: {log}")
-    results = asyncio.run(run_all(log_files=logs,judge_model=args.model, timeout=args.timeout, output_dir=Path(args.output_dir)))
+    try:
+        asyncio.run(run_all(
+            log_files=logs,
+            judge_model=args.model,
+            timeout=args.timeout,
+            output_dir=Path(args.output_dir),
+            skip_scored=args.skip_scored,
+            max_consecutive_errors=args.max_consecutive_errors,
+        ))
+    except JudgeUnavailable as error:
+        print(f"\nGiving up on this judge: {error}", flush=True)
+        return 2
+
     return 0
 
 

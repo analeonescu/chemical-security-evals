@@ -1,4 +1,10 @@
 inspect-ai==0.3.277
 google-genai==2.29.0
 groq==1.7.0
-pytest==9.1.1
+# Inspect's Groq provider speaks the OpenAI-compatible API, so the Groq
+# judges need this even though groq is pinned above.
+openai==3.29.0
+# Used by scripts/eval/analyse_scores.ipynb.
+pandas==3.0.6
+numpy==2.5.3
+matplotlib==3.11.2
