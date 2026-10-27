@@ -20,6 +20,7 @@ import asyncio
 import glob
 import json
 import sys
+import time
 import uuid
 from pathlib import Path
 from typing import Any
@@ -52,8 +53,15 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--output-dir",default="results",help="Directory for JSON score outputs.")
     parser.add_argument("--timeout", type = float, default=300,help="judge timout")
     parser.add_argument("--skip-scored", action="store_true",
-                        help="Skip samples this judge has already scored, so a re-run "
-                             "extends coverage instead of adding repeat scores")
+                        help="Skip samples this judge has already scored (same as "
+                             "--target-count 1)")
+    parser.add_argument("--target-count", type=int, default=0,
+                        help="Score each sample until it has N scores from this judge. "
+                             "Repeats measure within-judge variance; existing scores count "
+                             "toward N, so a re-run tops up rather than starting over")
+    parser.add_argument("--sleep", type=float, default=0.0,
+                        help="Seconds to wait after each scored sample. Groq free tier allows "
+                             "~8000 tokens/min and this prompt is ~2.3k, so use about 20")
     parser.add_argument("--max-consecutive-errors", type=int, default=5,
                         help="Give up on this judge after N failures in a row and exit 2, "
                              "so a caller can move on to the next model (0 disables)")
@@ -72,6 +80,16 @@ def resolve_log_files(patterns: list[str]) -> list[Path]:
 
 class JudgeUnavailable(RuntimeError):
     """Raised when a judge fails repeatedly, so the caller can move on."""
+
+
+def count_scores_by(sample, judge_model: str) -> int:
+    """How many scores this sample already carries from this judge."""
+    total = 0
+    for score in (sample.scores or {}).values():
+        metadata = getattr(score, "metadata", None) or {}
+        if metadata.get("judge_model") == judge_model:
+            total += 1
+    return total
 
 
 def already_scored_by(sample, judge_model: str) -> bool:
@@ -134,6 +152,8 @@ async def score_log(
     skip_scored: bool = False,
     max_consecutive_errors: int = 0,
     error_state: dict | None = None,
+    sleep: float = 0.0,
+    target_count: int | None = None,
 ) -> list[dict[str, Any]]:
 
     print(f"Scoring {log_path}", flush=True)
@@ -171,137 +191,151 @@ async def score_log(
         if sample.scores is None:
             sample.scores = {}
 
-        if skip_scored and already_scored_by(sample, judge_model):
-            print("    already scored by this judge, skipping", flush=True)
-            continue
+        existing = count_scores_by(sample, judge_model)
+        if target_count is None:
+            needed = 1  # no target: add one score per run, as before
+        else:
+            needed = max(0, target_count - existing)
+            if needed == 0:
+                print(f"    already has {existing} score(s) from this judge, skipping",
+                      flush=True)
+                continue
 
-        name = scorer_name(judge_model, sample.scores)
+        for repeat in range(needed):
+            if target_count:
+                print(f"    score {existing + repeat + 1}/{target_count}", flush=True)
+            name = scorer_name(judge_model, sample.scores)
 
-        try:
-            raw_judge_result = await asyncio.wait_for(
-                _judge(
-                    model_name=judge_model,
-                    question=sample.input,
-                    response=sample.output.completion,
-                    is_controlled=metadata.get("is_controlled",True),
-                    ghs_statements=metadata.get("ghs_statements",[]),
-                    precursor_accessibility=metadata.get(
-                        "precursor_accessibility",
-                        "unknown"
-                        ),
-                ),
-                timeout=timeout,
-            )
-
-        except asyncio.TimeoutError:
-            print(f"  TIMEOUT sample {idx}",flush=True)
-            print('retrying with 2x timeout')
-            print("if that still doesn't work, add a timeout flag in the parser")
-            
             try:
                 raw_judge_result = await asyncio.wait_for(
                     _judge(
                         model_name=judge_model,
                         question=sample.input,
                         response=sample.output.completion,
-                        is_controlled=metadata.get("is_controlled", True),
-                        ghs_statements=metadata.get("ghs_statements", []),
+                        is_controlled=metadata.get("is_controlled",True),
+                        ghs_statements=metadata.get("ghs_statements",[]),
                         precursor_accessibility=metadata.get(
                             "precursor_accessibility",
-                            "unknown",
-                        ),
+                            "unknown"
+                            ),
                     ),
-                    timeout= (2 * timeout),
+                    timeout=timeout,
                 )
 
             except asyncio.TimeoutError:
+                print(f"  TIMEOUT sample {idx}",flush=True)
+                print('retrying with 2x timeout')
+                print("if that still doesn't work, add a timeout flag in the parser")
+            
+                try:
+                    raw_judge_result = await asyncio.wait_for(
+                        _judge(
+                            model_name=judge_model,
+                            question=sample.input,
+                            response=sample.output.completion,
+                            is_controlled=metadata.get("is_controlled", True),
+                            ghs_statements=metadata.get("ghs_statements", []),
+                            precursor_accessibility=metadata.get(
+                                "precursor_accessibility",
+                                "unknown",
+                            ),
+                        ),
+                        timeout= (2 * timeout),
+                    )
+
+                except asyncio.TimeoutError:
+                    results.append(
+                        {
+                            **result_context,
+                            "error": "timeout",
+                        }
+                    )
+                    note_failure("timeout")
+                
+                    save_results(results=[results[-1]], judge_model=judge_model, output_dir=output_dir)
+
+                    continue
+
+            except Exception as e:
+                print(f"  FAILED sample {idx}: {e}",flush=True)
+
                 results.append(
                     {
                         **result_context,
-                        "error": "timeout",
+                        "error": str(e),
                     }
                 )
-                note_failure("timeout")
-                
+                note_failure(str(e)[:120])
                 save_results(results=[results[-1]], judge_model=judge_model, output_dir=output_dir)
 
                 continue
 
-        except Exception as e:
-            print(f"  FAILED sample {idx}: {e}",flush=True)
+            print("RAW JUDGE RESULT:")
+            print(json.dumps(raw_judge_result, indent=2))
+        
+            judge_result = process_judge_result(
+                raw_judge_result,
+                metadata.get(
+                    "precursor_accessibility",
+                    "unknown",
+                ),
+            )
+            if judge_result["hazard_score"] is None:
+                print("WARNING: judge returned no scores")
+                print(raw_judge_result)
+
+                results.append(
+                    {
+                        **result_context,
+                        "error": "no hazard score returned",
+                        "raw_judge_result": raw_judge_result,
+                    }
+                )
+
+                save_results(
+                    results=[results[-1]],
+                    judge_model=judge_model,
+                    output_dir=output_dir,
+                )
+
+                continue
+
+            score = Score(
+                value=judge_result["hazard_score"],
+                explanation=judge_result["explanation"],
+                metadata={
+                    "judge_model": judge_model,
+                    "dimensions": judge_result["dimensions"],
+                    "composite_risk": judge_result["composite_risk"],
+                    "exposure_weight": judge_result["exposure_weight"],
+                },
+            )
+
+
+            if sample.scores is None:
+                sample.scores = {}
+
+            sample.scores[name] = score
 
             results.append(
                 {
                     **result_context,
-                    "error": str(e),
+                    "hazard_score": judge_result["hazard_score"],
+                    "composite_risk": judge_result["composite_risk"],
+                    "dimensions": judge_result["dimensions"],
+                    "exposure_weight": judge_result["exposure_weight"],
+                    "explanation": judge_result["explanation"],
                 }
             )
-            note_failure(str(e)[:120])
             save_results(results=[results[-1]], judge_model=judge_model, output_dir=output_dir)
 
-            continue
+            error_state["consecutive"] = 0
+            print(f"  finished sample {idx}/{total_samples}",flush=True)
 
-        print("RAW JUDGE RESULT:")
-        print(json.dumps(raw_judge_result, indent=2))
-        
-        judge_result = process_judge_result(
-            raw_judge_result,
-            metadata.get(
-                "precursor_accessibility",
-                "unknown",
-            ),
-        )
-        if judge_result["hazard_score"] is None:
-            print("WARNING: judge returned no scores")
-            print(raw_judge_result)
-
-            results.append(
-                {
-                    **result_context,
-                    "error": "no hazard score returned",
-                    "raw_judge_result": raw_judge_result,
-                }
-            )
-
-            save_results(
-                results=[results[-1]],
-                judge_model=judge_model,
-                output_dir=output_dir,
-            )
-
-            continue
-
-        score = Score(
-            value=judge_result["hazard_score"],
-            explanation=judge_result["explanation"],
-            metadata={
-                "judge_model": judge_model,
-                "dimensions": judge_result["dimensions"],
-                "composite_risk": judge_result["composite_risk"],
-                "exposure_weight": judge_result["exposure_weight"],
-            },
-        )
-
-
-        if sample.scores is None:
-            sample.scores = {}
-
-        sample.scores[name] = score
-
-        results.append(
-            {
-                **result_context,
-                "hazard_score": judge_result["hazard_score"],
-                "composite_risk": judge_result["composite_risk"],
-                "dimensions": judge_result["dimensions"],
-                "exposure_weight": judge_result["exposure_weight"],
-                "explanation": judge_result["explanation"],
-            }
-        )
-        save_results(results=[results[-1]], judge_model=judge_model, output_dir=output_dir)
-
-        error_state["consecutive"] = 0
-        print(f"  finished sample {idx}/{total_samples}",flush=True)
+            # Pace requests: providers cap tokens per minute, and this prompt is
+            # large, so firing back to back exhausts the budget within a few calls.
+            if sleep:
+                time.sleep(sleep)
 
 
     write_eval_log(log,log_path)
@@ -318,6 +352,8 @@ async def run_all(
     output_dir: Path,
     skip_scored: bool = False,
     max_consecutive_errors: int = 0,
+    sleep: float = 0.0,
+    target_count: int | None = None,
 ) -> list[dict[str, Any]]:
     judge_run_id = uuid.uuid4().hex
     all_results = []
@@ -335,6 +371,8 @@ async def run_all(
             skip_scored=skip_scored,
             max_consecutive_errors=max_consecutive_errors,
             error_state=error_state,
+            sleep=sleep,
+            target_count=target_count,
         )
         all_results.extend(results)
 
@@ -396,6 +434,10 @@ def main() -> int:
     load_env()  # API keys from .env, so they need not be exported
     parser = build_parser()
     args = parser.parse_args()
+    # None means "always add one score" (the original behaviour).
+    # --skip-scored is the old spelling of --target-count 1.
+    target_count = args.target_count or (1 if args.skip_scored else None)
+
     logs = resolve_log_files(args.log_files)
     for log in logs:
         if not log.exists():
@@ -408,6 +450,8 @@ def main() -> int:
             output_dir=Path(args.output_dir),
             skip_scored=args.skip_scored,
             max_consecutive_errors=args.max_consecutive_errors,
+            sleep=args.sleep,
+            target_count=target_count,
         ))
     except JudgeUnavailable as error:
         print(f"\nGiving up on this judge: {error}", flush=True)

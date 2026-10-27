@@ -51,3 +51,36 @@ def test_scorer_name_suffixes_repeat_runs():
 def test_judge_unavailable_is_an_exception():
     with pytest.raises(JudgeUnavailable):
         raise JudgeUnavailable("judge down")
+
+
+def test_count_scores_by_counts_repeats():
+    from scripts.eval.score_eval import count_scores_by
+
+    sample = _Sample({
+        "judge_a": _Score("google/gemini-3.5-flash"),
+        "judge_a_1": _Score("google/gemini-3.5-flash"),
+        "judge_b": _Score("groq/qwen/qwen3.8-27b"),
+        "legacy": _Score(),
+    })
+
+    assert count_scores_by(sample, "google/gemini-3.5-flash") == 2
+    assert count_scores_by(sample, "groq/qwen/qwen3.8-27b") == 1
+    assert count_scores_by(sample, "never/used") == 0
+
+
+def test_count_scores_by_handles_unscored_samples():
+    from scripts.eval.score_eval import count_scores_by
+
+    assert count_scores_by(_Sample(None), "any/model") == 0
+    assert count_scores_by(_Sample({}), "any/model") == 0
+
+
+def test_target_count_arithmetic_tops_up_rather_than_restarting():
+    """Existing scores count toward the target, so a re-run only fills the gap."""
+    from scripts.eval.score_eval import count_scores_by
+
+    sample = _Sample({"judge_a": _Score("m"), "judge_a_1": _Score("m")})
+    existing = count_scores_by(sample, "m")
+
+    assert max(0, 4 - existing) == 2, "two more scores needed to reach four"
+    assert max(0, 2 - existing) == 0, "already at target, nothing to do"

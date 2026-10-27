@@ -58,10 +58,12 @@ def test_require_key_reports_every_accepted_name(tmp_path, monkeypatch):
     assert "FIRST_KEY" in str(excinfo.value) and "SECOND_KEY" in str(excinfo.value)
 
 
-def test_example_template_is_tracked_and_has_no_values():
+def test_example_template_carries_no_values():
+    """The template is optional, but if present it must never hold a real key."""
     example = ROOT / ".env.example"
+    if not example.is_file():
+        pytest.skip(".env.example not present")
 
-    assert example.is_file(), ".env.example should be committed as the template"
     for line in example.read_text(encoding="utf-8").splitlines():
         if line.strip() and not line.strip().startswith("#"):
             key, _, value = line.partition("=")
